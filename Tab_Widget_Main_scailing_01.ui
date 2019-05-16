@@ -1,0 +1,1750 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>584</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>RPGreenhouse</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QHBoxLayout" name="horizontalLayout_36">
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QTabWidget" name="tabWidget">
+        <property name="currentIndex">
+         <number>0</number>
+        </property>
+        <widget class="QWidget" name="mpl_tab">
+         <attribute name="title">
+          <string>Graphs</string>
+         </attribute>
+         <layout class="QHBoxLayout" name="horizontalLayout_49">
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_48">
+            <item>
+             <widget class="QTabWidget" name="tabWidget_4">
+              <property name="currentIndex">
+               <number>0</number>
+              </property>
+              <widget class="MplWidget" name="mpl">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <attribute name="title">
+                <string>Greenhouse graph</string>
+               </attribute>
+              </widget>
+              <widget class="QWidget" name="tab_15">
+               <attribute name="title">
+                <string>Weather station graph</string>
+               </attribute>
+               <layout class="QHBoxLayout" name="horizontalLayout_59">
+                <item>
+                 <layout class="QVBoxLayout" name="verticalLayout_9"/>
+                </item>
+               </layout>
+              </widget>
+              <widget class="QWidget" name="tab_16">
+               <attribute name="title">
+                <string>Current greenhouse data</string>
+               </attribute>
+               <layout class="QHBoxLayout" name="horizontalLayout_57">
+                <item>
+                 <widget class="QGroupBox" name="groupBox_31">
+                  <property name="title">
+                   <string/>
+                  </property>
+                  <layout class="QHBoxLayout" name="horizontalLayout_54">
+                   <item>
+                    <layout class="QGridLayout" name="gridLayout_32">
+                     <item row="0" column="0">
+                      <widget class="QLabel" name="label_75">
+                       <property name="text">
+                        <string>Temperature (up - down)</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="3" column="0">
+                      <widget class="QLabel" name="label_76">
+                       <property name="text">
+                        <string>Light</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="4" column="0">
+                      <widget class="QLabel" name="label_77">
+                       <property name="text">
+                        <string>Soil moisture (average - min - max)</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="2" column="1">
+                      <layout class="QHBoxLayout" name="horizontalLayout_55">
+                       <item>
+                        <widget class="QLCDNumber" name="lcdNumber_35"/>
+                       </item>
+                       <item>
+                        <widget class="QLCDNumber" name="lcdNumber_36"/>
+                       </item>
+                      </layout>
+                     </item>
+                     <item row="0" column="1">
+                      <layout class="QHBoxLayout" name="horizontalLayout_56">
+                       <item>
+                        <widget class="QLCDNumber" name="lcdNumber_37"/>
+                       </item>
+                       <item>
+                        <widget class="QLCDNumber" name="lcdNumber_38"/>
+                       </item>
+                      </layout>
+                     </item>
+                     <item row="2" column="0">
+                      <widget class="QLabel" name="label_78">
+                       <property name="text">
+                        <string>Water used ( last 24h - 7 days)</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="3" column="1">
+                      <widget class="QLCDNumber" name="lcdNumber_34"/>
+                     </item>
+                     <item row="1" column="1">
+                      <widget class="QLCDNumber" name="lcdNumber_32"/>
+                     </item>
+                     <item row="1" column="0">
+                      <widget class="QLabel" name="label_74">
+                       <property name="text">
+                        <string>Humidity</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="4" column="1">
+                      <layout class="QHBoxLayout" name="horizontalLayout_58">
+                       <item>
+                        <widget class="QLCDNumber" name="lcdNumber_40"/>
+                       </item>
+                       <item>
+                        <widget class="QLCDNumber" name="lcdNumber_39"/>
+                       </item>
+                       <item>
+                        <widget class="QLCDNumber" name="lcdNumber_33"/>
+                       </item>
+                      </layout>
+                     </item>
+                    </layout>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+              <widget class="QWidget" name="tab_17">
+               <attribute name="title">
+                <string>Current weather data</string>
+               </attribute>
+               <layout class="QHBoxLayout" name="horizontalLayout_53">
+                <item>
+                 <widget class="QGroupBox" name="groupBox_30">
+                  <property name="title">
+                   <string/>
+                  </property>
+                  <layout class="QHBoxLayout" name="horizontalLayout_50">
+                   <item>
+                    <layout class="QGridLayout" name="gridLayout_31">
+                     <item row="1" column="0">
+                      <widget class="QLabel" name="label_69">
+                       <property name="text">
+                        <string>Humidity</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="0" column="0">
+                      <widget class="QLabel" name="label_70">
+                       <property name="text">
+                        <string>Temperature (sun - shade)</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="1" column="1">
+                      <widget class="QLCDNumber" name="lcdNumber_25"/>
+                     </item>
+                     <item row="3" column="0">
+                      <widget class="QLabel" name="label_71">
+                       <property name="text">
+                        <string>Sunlight</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="4" column="1">
+                      <widget class="QLCDNumber" name="lcdNumber_26"/>
+                     </item>
+                     <item row="4" column="0">
+                      <widget class="QLabel" name="label_72">
+                       <property name="text">
+                        <string>Soil moisture</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="2" column="0">
+                      <widget class="QLabel" name="label_73">
+                       <property name="text">
+                        <string>Rainfall (24 hours - 7 days)</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="3" column="1">
+                      <widget class="QLCDNumber" name="lcdNumber_27"/>
+                     </item>
+                     <item row="2" column="1">
+                      <layout class="QHBoxLayout" name="horizontalLayout_51">
+                       <item>
+                        <widget class="QLCDNumber" name="lcdNumber_28"/>
+                       </item>
+                       <item>
+                        <widget class="QLCDNumber" name="lcdNumber_29"/>
+                       </item>
+                      </layout>
+                     </item>
+                     <item row="0" column="1">
+                      <layout class="QHBoxLayout" name="horizontalLayout_52">
+                       <item>
+                        <widget class="QLCDNumber" name="lcdNumber_30"/>
+                       </item>
+                       <item>
+                        <widget class="QLCDNumber" name="lcdNumber_31"/>
+                       </item>
+                      </layout>
+                     </item>
+                    </layout>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="tab_2">
+         <attribute name="title">
+          <string>Settings</string>
+         </attribute>
+         <layout class="QVBoxLayout" name="verticalLayout_2">
+          <item>
+           <layout class="QGridLayout" name="gridLayout_20">
+            <item row="0" column="0">
+             <widget class="QTabWidget" name="tabWidget_2">
+              <property name="currentIndex">
+               <number>2</number>
+              </property>
+              <widget class="QWidget" name="tab_3">
+               <attribute name="title">
+                <string>Light</string>
+               </attribute>
+               <layout class="QGridLayout" name="gridLayout_2">
+                <item row="1" column="0">
+                 <widget class="QGroupBox" name="groupBox">
+                  <property name="title">
+                   <string>Action on breach</string>
+                  </property>
+                  <layout class="QHBoxLayout" name="horizontalLayout_8">
+                   <item>
+                    <layout class="QGridLayout" name="gridLayout_7">
+                     <item row="0" column="0">
+                      <widget class="QCheckBox" name="light_bool_normalise">
+                       <property name="text">
+                        <string>Normalise</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="1" column="0">
+                      <widget class="QCheckBox" name="light_bool_alert">
+                       <property name="text">
+                        <string>Alert</string>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+                <item row="0" column="0">
+                 <widget class="QGroupBox" name="groupBox_5">
+                  <property name="title">
+                   <string>Set light by:</string>
+                  </property>
+                  <layout class="QHBoxLayout" name="horizontalLayout_4">
+                   <item>
+                    <layout class="QVBoxLayout" name="verticalLayout_3">
+                     <item>
+                      <widget class="QRadioButton" name="light_trigers_sensors">
+                       <property name="text">
+                        <string>Sensors</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QRadioButton" name="light_trigers_time">
+                       <property name="text">
+                        <string>Time</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QRadioButton" name="light_trigers_off">
+                       <property name="text">
+                        <string>Off</string>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+                <item row="0" column="3">
+                 <widget class="QGroupBox" name="groupBox_2">
+                  <property name="title">
+                   <string>RGB shift</string>
+                  </property>
+                  <layout class="QHBoxLayout" name="horizontalLayout_7">
+                   <item>
+                    <layout class="QGridLayout" name="gridLayout_6">
+                     <item row="0" column="0">
+                      <widget class="QSpinBox" name="light_rgb_red">
+                       <property name="maximum">
+                        <number>255</number>
+                       </property>
+                       <property name="value">
+                        <number>255</number>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="1" column="0">
+                      <widget class="QSpinBox" name="light_rgb_green">
+                       <property name="maximum">
+                        <number>255</number>
+                       </property>
+                       <property name="value">
+                        <number>255</number>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="2" column="0">
+                      <widget class="QSpinBox" name="light_rgb_blue">
+                       <property name="maximum">
+                        <number>255</number>
+                       </property>
+                       <property name="value">
+                        <number>255</number>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="2" column="1">
+                      <widget class="QLabel" name="label_7">
+                       <property name="text">
+                        <string>Blue</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="1" column="1">
+                      <widget class="QLabel" name="label_8">
+                       <property name="text">
+                        <string>Green</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="0" column="1">
+                      <widget class="QLabel" name="label_9">
+                       <property name="text">
+                        <string>Red</string>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+                <item row="0" column="1">
+                 <widget class="QGroupBox" name="groupBox_4">
+                  <property name="title">
+                   <string>Min/max light</string>
+                  </property>
+                  <layout class="QHBoxLayout" name="horizontalLayout_5">
+                   <item>
+                    <layout class="QGridLayout" name="gridLayout_4">
+                     <item row="1" column="0">
+                      <widget class="QLabel" name="label_2">
+                       <property name="text">
+                        <string>Max</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="1" column="1">
+                      <widget class="QSpinBox" name="light_light_max">
+                       <property name="maximum">
+                        <number>10000</number>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="0" column="1">
+                      <widget class="QSpinBox" name="light_light_min">
+                       <property name="maximum">
+                        <number>10000</number>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="0" column="0">
+                      <widget class="QLabel" name="label">
+                       <property name="text">
+                        <string>Min</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="0" column="2">
+                      <widget class="QLabel" name="label_3">
+                       <property name="text">
+                        <string>lm</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="1" column="2">
+                      <widget class="QLabel" name="label_4">
+                       <property name="text">
+                        <string>lm</string>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+                <item row="1" column="3">
+                 <layout class="QGridLayout" name="gridLayout">
+                  <item row="0" column="0">
+                   <widget class="QGroupBox" name="groupBox_21">
+                    <property name="title">
+                     <string>Current level</string>
+                    </property>
+                    <layout class="QHBoxLayout" name="horizontalLayout_30">
+                     <item>
+                      <layout class="QGridLayout" name="gridLayout_23">
+                       <item row="1" column="0">
+                        <widget class="QLabel" name="label_31">
+                         <property name="text">
+                          <string>Sensor 2</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="0" column="0">
+                        <widget class="QLabel" name="label_30">
+                         <property name="text">
+                          <string>Sensor 1</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="1" column="1">
+                        <widget class="QLCDNumber" name="light_sensor_2_lcdNumber_2"/>
+                       </item>
+                       <item row="0" column="1">
+                        <widget class="QLCDNumber" name="light_sensor_1_lcdNumber"/>
+                       </item>
+                       <item row="2" column="0">
+                        <widget class="QLabel" name="label_35">
+                         <property name="text">
+                          <string>Outside</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="2" column="1">
+                        <widget class="QLCDNumber" name="light_sensor_outside_lcdNumber_7"/>
+                       </item>
+                      </layout>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item row="1" column="1">
+                 <widget class="QGroupBox" name="groupBox_3">
+                  <property name="title">
+                   <string>Time settings</string>
+                  </property>
+                  <layout class="QHBoxLayout" name="horizontalLayout_6">
+                   <item>
+                    <layout class="QGridLayout" name="gridLayout_5">
+                     <item row="1" column="0">
+                      <widget class="QLabel" name="label_6">
+                       <property name="text">
+                        <string>Off</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="0" column="0">
+                      <widget class="QLabel" name="label_5">
+                       <property name="text">
+                        <string>On</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="0" column="1">
+                      <widget class="QTimeEdit" name="light_time_on"/>
+                     </item>
+                     <item row="1" column="1">
+                      <widget class="QTimeEdit" name="light_time_off"/>
+                     </item>
+                    </layout>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+              <widget class="QWidget" name="tab_4">
+               <attribute name="title">
+                <string>Temperature</string>
+               </attribute>
+               <layout class="QHBoxLayout" name="horizontalLayout_9">
+                <item>
+                 <layout class="QGridLayout" name="gridLayout_8">
+                  <item row="0" column="1">
+                   <widget class="QGroupBox" name="groupBox_7">
+                    <property name="title">
+                     <string>Min/max temperature</string>
+                    </property>
+                    <layout class="QHBoxLayout" name="horizontalLayout_10">
+                     <item>
+                      <layout class="QGridLayout" name="gridLayout_9">
+                       <item row="1" column="0">
+                        <widget class="QLabel" name="label_11">
+                         <property name="text">
+                          <string>Max</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="0" column="0">
+                        <widget class="QLabel" name="label_10">
+                         <property name="text">
+                          <string>Min</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="0" column="1">
+                        <widget class="QSpinBox" name="temperature_temp_max"/>
+                       </item>
+                       <item row="1" column="1">
+                        <widget class="QSpinBox" name="temperature_temp_min"/>
+                       </item>
+                       <item row="0" column="2">
+                        <widget class="QLabel" name="label_12">
+                         <property name="text">
+                          <string>C</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="1" column="2">
+                        <widget class="QLabel" name="label_13">
+                         <property name="text">
+                          <string>C</string>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                  <item row="0" column="0">
+                   <widget class="QGroupBox" name="groupBox_8">
+                    <property name="title">
+                     <string>Set temperature by:</string>
+                    </property>
+                    <layout class="QHBoxLayout" name="horizontalLayout_2">
+                     <item>
+                      <layout class="QVBoxLayout" name="verticalLayout_4">
+                       <item>
+                        <widget class="QRadioButton" name="temperature_trigers_sensors">
+                         <property name="text">
+                          <string>Sensors</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QRadioButton" name="temperature_trigers_time">
+                         <property name="text">
+                          <string>Time</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QRadioButton" name="temperature_trigers_off">
+                         <property name="text">
+                          <string>Off</string>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                  <item row="1" column="1">
+                   <widget class="QGroupBox" name="groupBox_10">
+                    <property name="title">
+                     <string>Action on breach</string>
+                    </property>
+                    <layout class="QHBoxLayout" name="horizontalLayout_12">
+                     <item>
+                      <layout class="QVBoxLayout" name="verticalLayout_7">
+                       <item>
+                        <widget class="QCheckBox" name="temperature_bool_temp_normalise">
+                         <property name="text">
+                          <string>Normalise</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QCheckBox" name="temperature_bool_temp_alert">
+                         <property name="text">
+                          <string>Alert</string>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                  <item row="1" column="0">
+                   <widget class="QGroupBox" name="groupBox_9">
+                    <property name="title">
+                     <string>Heating on </string>
+                    </property>
+                    <layout class="QHBoxLayout" name="horizontalLayout_11">
+                     <item>
+                      <layout class="QGridLayout" name="gridLayout_10">
+                       <item row="0" column="0">
+                        <widget class="QLabel" name="label_14">
+                         <property name="text">
+                          <string>On</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="1" column="0">
+                        <widget class="QLabel" name="label_15">
+                         <property name="text">
+                          <string>Off</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="0" column="1">
+                        <widget class="QTimeEdit" name="temperature_time_heating_on"/>
+                       </item>
+                       <item row="1" column="1">
+                        <widget class="QTimeEdit" name="temperature_time_heating_off"/>
+                       </item>
+                      </layout>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                  <item row="2" column="0">
+                   <widget class="QGroupBox" name="groupBox_6">
+                    <property name="title">
+                     <string>Vent on</string>
+                    </property>
+                    <layout class="QHBoxLayout" name="horizontalLayout_3">
+                     <item>
+                      <layout class="QGridLayout" name="gridLayout_3">
+                       <item row="1" column="0">
+                        <widget class="QLabel" name="label_58">
+                         <property name="text">
+                          <string>Off</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="0" column="0">
+                        <widget class="QLabel" name="label_57">
+                         <property name="text">
+                          <string>On</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="0" column="1">
+                        <widget class="QTimeEdit" name="temperature_time_venting_on"/>
+                       </item>
+                       <item row="1" column="1">
+                        <widget class="QTimeEdit" name="temperature_time_venting_off"/>
+                       </item>
+                      </layout>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <widget class="QGroupBox" name="groupBox_25">
+                  <property name="title">
+                   <string>Current temperature</string>
+                  </property>
+                  <layout class="QHBoxLayout" name="horizontalLayout_33">
+                   <item>
+                    <layout class="QGridLayout" name="gridLayout_24">
+                     <item row="1" column="0">
+                      <widget class="QLabel" name="label_33">
+                       <property name="text">
+                        <string>Sensor 2</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="1" column="1">
+                      <widget class="QLCDNumber" name="temp_sensor_2_lcdNumber_5"/>
+                     </item>
+                     <item row="3" column="0">
+                      <widget class="QLabel" name="label_44">
+                       <property name="text">
+                        <string>Sensor 4</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="2" column="1">
+                      <widget class="QLCDNumber" name="temp_sensor_3_lcdNumber_14"/>
+                     </item>
+                     <item row="4" column="0">
+                      <widget class="QLabel" name="label_34">
+                       <property name="text">
+                        <string>Outside</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="3" column="1">
+                      <widget class="QLCDNumber" name="temp_sensor_4_lcdNumber_15"/>
+                     </item>
+                     <item row="4" column="1">
+                      <widget class="QLCDNumber" name="temp_sensor_outside_lcdNumber_6"/>
+                     </item>
+                     <item row="0" column="0">
+                      <widget class="QLabel" name="label_32">
+                       <property name="text">
+                        <string>Sensor 1</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="2" column="0">
+                      <widget class="QLabel" name="label_43">
+                       <property name="text">
+                        <string>Sensor 3</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="0" column="1">
+                      <widget class="QLCDNumber" name="temp_sensor_1_lcdNumber_4"/>
+                     </item>
+                    </layout>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+              <widget class="QWidget" name="tab_6">
+               <attribute name="title">
+                <string>Humidity</string>
+               </attribute>
+               <layout class="QHBoxLayout" name="horizontalLayout_14">
+                <item>
+                 <layout class="QGridLayout" name="gridLayout_11">
+                  <item row="1" column="0">
+                   <widget class="QGroupBox" name="groupBox_12">
+                    <property name="title">
+                     <string>Regulate by:</string>
+                    </property>
+                    <layout class="QHBoxLayout" name="horizontalLayout_17">
+                     <item>
+                      <layout class="QGridLayout" name="gridLayout_21">
+                       <item row="0" column="0">
+                        <widget class="QCheckBox" name="humidity_bool_vent">
+                         <property name="text">
+                          <string>Vent</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="1" column="0">
+                        <widget class="QCheckBox" name="humidity_bool_restrict_water">
+                         <property name="text">
+                          <string>Restrict or turn on watering</string>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                  <item row="1" column="1">
+                   <widget class="QGroupBox" name="groupBox_24">
+                    <property name="title">
+                     <string>Action on breach</string>
+                    </property>
+                    <layout class="QHBoxLayout" name="horizontalLayout_32">
+                     <item>
+                      <layout class="QVBoxLayout" name="verticalLayout_14">
+                       <item>
+                        <widget class="QCheckBox" name="humidity_bool_normalise">
+                         <property name="text">
+                          <string>Normalise</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QCheckBox" name="humidity_bool_alert">
+                         <property name="text">
+                          <string>Alert</string>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                  <item row="0" column="1">
+                   <widget class="QGroupBox" name="groupBox_13">
+                    <property name="title">
+                     <string>Min/max humidity</string>
+                    </property>
+                    <layout class="QHBoxLayout" name="horizontalLayout_16">
+                     <item>
+                      <layout class="QGridLayout" name="gridLayout_12">
+                       <item row="0" column="2">
+                        <widget class="QLabel" name="label_18">
+                         <property name="text">
+                          <string>%</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="1" column="2">
+                        <widget class="QLabel" name="label_19">
+                         <property name="text">
+                          <string>%</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="0" column="0">
+                        <widget class="QLabel" name="label_16">
+                         <property name="text">
+                          <string>Min</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="1" column="0">
+                        <widget class="QLabel" name="label_17">
+                         <property name="text">
+                          <string>Max</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="0" column="1">
+                        <widget class="QSpinBox" name="humidity_humidity_min"/>
+                       </item>
+                       <item row="1" column="1">
+                        <widget class="QSpinBox" name="humidity_humidity_max"/>
+                       </item>
+                      </layout>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                  <item row="0" column="0">
+                   <widget class="QGroupBox" name="groupBox_11">
+                    <property name="title">
+                     <string>Set humidity by:</string>
+                    </property>
+                    <layout class="QHBoxLayout" name="horizontalLayout_15">
+                     <item>
+                      <layout class="QVBoxLayout" name="verticalLayout_5">
+                       <item>
+                        <widget class="QRadioButton" name="humidity_trigers_sensors">
+                         <property name="text">
+                          <string>Sensors</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QRadioButton" name="humidity_trigers_off">
+                         <property name="text">
+                          <string>Off</string>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                  <item row="1" column="2">
+                   <widget class="QGroupBox" name="groupBox_23">
+                    <property name="title">
+                     <string>Current humidity</string>
+                    </property>
+                    <layout class="QHBoxLayout" name="horizontalLayout_31">
+                     <item>
+                      <layout class="QGridLayout" name="gridLayout_25">
+                       <item row="0" column="1">
+                        <widget class="QLCDNumber" name="hum_inside_lcdNumber_3"/>
+                       </item>
+                       <item row="0" column="0">
+                        <widget class="QLabel" name="label_36">
+                         <property name="text">
+                          <string>Inside</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="1" column="0">
+                        <widget class="QLabel" name="label_37">
+                         <property name="text">
+                          <string>Outside</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="1" column="1">
+                        <widget class="QLCDNumber" name="hum_outside_lcdNumber_8"/>
+                       </item>
+                      </layout>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+               </layout>
+              </widget>
+              <widget class="QWidget" name="tab_7">
+               <attribute name="title">
+                <string>Watering</string>
+               </attribute>
+               <layout class="QHBoxLayout" name="horizontalLayout_19">
+                <item>
+                 <layout class="QGridLayout" name="gridLayout_14">
+                  <item row="1" column="0">
+                   <widget class="QGroupBox" name="groupBox_15">
+                    <property name="title">
+                     <string>Watering time and amount</string>
+                    </property>
+                    <layout class="QHBoxLayout" name="horizontalLayout_20">
+                     <item>
+                      <layout class="QGridLayout" name="gridLayout_22">
+                       <item row="0" column="1">
+                        <layout class="QHBoxLayout" name="horizontalLayout_37">
+                         <item>
+                          <widget class="QLabel" name="label_24">
+                           <property name="text">
+                            <string>Turn on water at</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item>
+                          <widget class="QTimeEdit" name="water_time_of_watering"/>
+                         </item>
+                        </layout>
+                       </item>
+                       <item row="1" column="1">
+                        <widget class="QGroupBox" name="groupBox_33">
+                         <property name="title">
+                          <string/>
+                         </property>
+                         <layout class="QHBoxLayout" name="horizontalLayout_61">
+                          <item>
+                           <layout class="QGridLayout" name="gridLayout_33">
+                            <item row="0" column="0">
+                             <widget class="QRadioButton" name="water_bool_period">
+                              <property name="text">
+                               <string>For</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item row="0" column="1">
+                             <widget class="QSpinBox" name="water_time_watering_duration"/>
+                            </item>
+                            <item row="0" column="2">
+                             <widget class="QLabel" name="label_25">
+                              <property name="text">
+                               <string>sec</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item row="1" column="0">
+                             <widget class="QRadioButton" name="water_bool_amount">
+                              <property name="text">
+                               <string>Pour</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item row="1" column="1">
+                             <widget class="QSpinBox" name="water_amount"/>
+                            </item>
+                            <item row="1" column="2">
+                             <widget class="QLabel" name="label_60">
+                              <property name="text">
+                               <string>litres</string>
+                              </property>
+                             </widget>
+                            </item>
+                           </layout>
+                          </item>
+                         </layout>
+                        </widget>
+                       </item>
+                      </layout>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                  <item row="0" column="1">
+                   <widget class="QGroupBox" name="groupBox_16">
+                    <property name="title">
+                     <string>Min/max soil moisture</string>
+                    </property>
+                    <layout class="QHBoxLayout" name="horizontalLayout_18">
+                     <item>
+                      <layout class="QGridLayout" name="gridLayout_18">
+                       <item row="0" column="0">
+                        <widget class="QLabel" name="label_20">
+                         <property name="text">
+                          <string>Min</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="1" column="0">
+                        <widget class="QLabel" name="label_21">
+                         <property name="text">
+                          <string>Max</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="1" column="1">
+                        <widget class="QSpinBox" name="water_soil_moisture_treschold_max"/>
+                       </item>
+                       <item row="1" column="2">
+                        <widget class="QLabel" name="label_23">
+                         <property name="text">
+                          <string>%</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="0" column="1">
+                        <widget class="QSpinBox" name="water_soil_moisture_treschold_min"/>
+                       </item>
+                       <item row="0" column="2">
+                        <widget class="QLabel" name="label_22">
+                         <property name="text">
+                          <string>%</string>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                  <item row="1" column="1">
+                   <widget class="QGroupBox" name="groupBox_17">
+                    <property name="title">
+                     <string>Action on breach</string>
+                    </property>
+                    <layout class="QHBoxLayout" name="horizontalLayout_21">
+                     <item>
+                      <layout class="QVBoxLayout" name="verticalLayout_8">
+                       <item>
+                        <widget class="QCheckBox" name="water_bool_normalise">
+                         <property name="text">
+                          <string>Normalise</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QCheckBox" name="water_bool_alert">
+                         <property name="text">
+                          <string>Alert</string>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                  <item row="0" column="0">
+                   <widget class="QGroupBox" name="groupBox_14">
+                    <property name="title">
+                     <string>Watering by:</string>
+                    </property>
+                    <layout class="QHBoxLayout" name="horizontalLayout_13">
+                     <item>
+                      <layout class="QGridLayout" name="gridLayout_15">
+                       <item row="1" column="0">
+                        <widget class="QRadioButton" name="water_trigers_time">
+                         <property name="text">
+                          <string>Time</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="0" column="0">
+                        <widget class="QRadioButton" name="water_trigers_sensors">
+                         <property name="text">
+                          <string>Sensors</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="2" column="0">
+                        <widget class="QRadioButton" name="water_trigers_off">
+                         <property name="text">
+                          <string>Off</string>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                  <item row="0" column="2">
+                   <widget class="QGroupBox" name="groupBox_19">
+                    <property name="title">
+                     <string>Current soil moisture</string>
+                    </property>
+                    <layout class="QHBoxLayout" name="horizontalLayout_22">
+                     <item>
+                      <layout class="QGridLayout" name="gridLayout_26">
+                       <item row="2" column="0">
+                        <widget class="QLabel" name="label_40">
+                         <property name="text">
+                          <string>Sensor 3</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="3" column="0">
+                        <widget class="QLabel" name="label_41">
+                         <property name="text">
+                          <string>Sensor 4</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="0" column="0">
+                        <widget class="QLabel" name="label_38">
+                         <property name="text">
+                          <string>Sensor 1</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="4" column="0">
+                        <widget class="QLabel" name="label_42">
+                         <property name="text">
+                          <string>Outside</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="1" column="0">
+                        <widget class="QLabel" name="label_39">
+                         <property name="text">
+                          <string>Sensor 2</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="1" column="1">
+                        <widget class="QLCDNumber" name="lcdNumber_10"/>
+                       </item>
+                       <item row="4" column="1">
+                        <widget class="QLCDNumber" name="lcdNumber_13"/>
+                       </item>
+                       <item row="2" column="1">
+                        <widget class="QLCDNumber" name="lcdNumber_11"/>
+                       </item>
+                       <item row="3" column="1">
+                        <widget class="QLCDNumber" name="lcdNumber_12"/>
+                       </item>
+                       <item row="0" column="1">
+                        <widget class="QLCDNumber" name="lcdNumber_9"/>
+                       </item>
+                      </layout>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                  <item row="1" column="2">
+                   <widget class="QGroupBox" name="groupBox_29">
+                    <property name="title">
+                     <string>Water used</string>
+                    </property>
+                    <layout class="QHBoxLayout" name="horizontalLayout_47">
+                     <item>
+                      <layout class="QGridLayout" name="gridLayout_30">
+                       <item row="0" column="0">
+                        <widget class="QLabel" name="label_67">
+                         <property name="text">
+                          <string>Last 24h</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="1" column="0">
+                        <widget class="QLabel" name="label_68">
+                         <property name="text">
+                          <string>Last week</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="0" column="1">
+                        <widget class="QLCDNumber" name="lcdNumber_16"/>
+                       </item>
+                       <item row="1" column="1">
+                        <widget class="QLCDNumber" name="lcdNumber_17"/>
+                       </item>
+                      </layout>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+               </layout>
+              </widget>
+              <widget class="QWidget" name="tab_8">
+               <attribute name="title">
+                <string>Alerts</string>
+               </attribute>
+               <layout class="QHBoxLayout" name="horizontalLayout_24">
+                <item>
+                 <layout class="QGridLayout" name="gridLayout_16">
+                  <item row="0" column="0">
+                   <widget class="QGroupBox" name="groupBox_18">
+                    <property name="title">
+                     <string/>
+                    </property>
+                    <layout class="QHBoxLayout" name="horizontalLayout_25">
+                     <item>
+                      <layout class="QGridLayout" name="gridLayout_17">
+                       <item row="2" column="0">
+                        <widget class="QCheckBox" name="checkBox_12">
+                         <property name="text">
+                          <string>SMS</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="0" column="1">
+                        <widget class="QLabel" name="label_26">
+                         <property name="text">
+                          <string>Text</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="0" column="0">
+                        <widget class="QCheckBox" name="checkBox_10">
+                         <property name="text">
+                          <string>On screen alert</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="0" column="2">
+                        <widget class="QLineEdit" name="lineEdit">
+                         <property name="text">
+                          <string/>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="3" column="1">
+                        <widget class="QLabel" name="label_29">
+                         <property name="text">
+                          <string>Email address</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="1" column="2">
+                        <widget class="QLineEdit" name="lineEdit_2"/>
+                       </item>
+                       <item row="1" column="1">
+                        <widget class="QLabel" name="label_27">
+                         <property name="text">
+                          <string>Sound file</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="1" column="0">
+                        <widget class="QCheckBox" name="checkBox_11">
+                         <property name="text">
+                          <string>Sound</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="3" column="0">
+                        <widget class="QCheckBox" name="checkBox_13">
+                         <property name="text">
+                          <string>Email</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="2" column="1">
+                        <widget class="QLabel" name="label_28">
+                         <property name="text">
+                          <string>Mobile number</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="2" column="2">
+                        <widget class="QLineEdit" name="lineEdit_3"/>
+                       </item>
+                       <item row="3" column="2">
+                        <widget class="QLineEdit" name="lineEdit_4"/>
+                       </item>
+                      </layout>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+               </layout>
+              </widget>
+              <widget class="QWidget" name="tab">
+               <attribute name="title">
+                <string>Manual</string>
+               </attribute>
+               <layout class="QHBoxLayout" name="horizontalLayout_38">
+                <item>
+                 <layout class="QGridLayout" name="gridLayout_28">
+                  <item row="0" column="0">
+                   <widget class="QGroupBox" name="groupBox_22">
+                    <property name="title">
+                     <string/>
+                    </property>
+                    <layout class="QHBoxLayout" name="horizontalLayout_39">
+                     <item>
+                      <layout class="QGridLayout" name="gridLayout_29">
+                       <item row="1" column="0">
+                        <widget class="QGroupBox" name="groupBox_27">
+                         <property name="title">
+                          <string/>
+                         </property>
+                         <layout class="QHBoxLayout" name="horizontalLayout_45">
+                          <item>
+                           <layout class="QHBoxLayout" name="horizontalLayout_43">
+                            <item>
+                             <widget class="QLabel" name="label_46">
+                              <property name="text">
+                               <string>Watering</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item>
+                             <widget class="QRadioButton" name="water_bool_manual_on">
+                              <property name="text">
+                               <string>On</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item>
+                             <widget class="QRadioButton" name="water_bool_manual_off">
+                              <property name="text">
+                               <string>Off</string>
+                              </property>
+                              <property name="checked">
+                               <bool>true</bool>
+                              </property>
+                             </widget>
+                            </item>
+                           </layout>
+                          </item>
+                         </layout>
+                        </widget>
+                       </item>
+                       <item row="0" column="0">
+                        <layout class="QHBoxLayout" name="horizontalLayout_41">
+                         <item>
+                          <widget class="QGroupBox" name="groupBox_26">
+                           <property name="title">
+                            <string/>
+                           </property>
+                           <layout class="QHBoxLayout" name="horizontalLayout_42">
+                            <item>
+                             <layout class="QHBoxLayout" name="horizontalLayout_40">
+                              <item>
+                               <widget class="QLabel" name="label_45">
+                                <property name="text">
+                                 <string>Light</string>
+                                </property>
+                               </widget>
+                              </item>
+                              <item>
+                               <widget class="QRadioButton" name="light_bool_manual_on">
+                                <property name="text">
+                                 <string>On</string>
+                                </property>
+                               </widget>
+                              </item>
+                              <item>
+                               <widget class="QRadioButton" name="light_bool_manual_off">
+                                <property name="text">
+                                 <string>Off</string>
+                                </property>
+                                <property name="checked">
+                                 <bool>true</bool>
+                                </property>
+                               </widget>
+                              </item>
+                             </layout>
+                            </item>
+                           </layout>
+                          </widget>
+                         </item>
+                        </layout>
+                       </item>
+                       <item row="3" column="0">
+                        <widget class="QGroupBox" name="groupBox_28">
+                         <property name="title">
+                          <string/>
+                         </property>
+                         <layout class="QHBoxLayout" name="horizontalLayout_46">
+                          <item>
+                           <layout class="QHBoxLayout" name="horizontalLayout_44">
+                            <item>
+                             <widget class="QLabel" name="label_66">
+                              <property name="text">
+                               <string>Vent</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item>
+                             <widget class="QRadioButton" name="temperature_bool_venting_manual_on">
+                              <property name="text">
+                               <string>On</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item>
+                             <widget class="QRadioButton" name="temperature_bool_venting_manual_off">
+                              <property name="text">
+                               <string>Off</string>
+                              </property>
+                              <property name="checked">
+                               <bool>true</bool>
+                              </property>
+                             </widget>
+                            </item>
+                           </layout>
+                          </item>
+                         </layout>
+                        </widget>
+                       </item>
+                       <item row="2" column="0">
+                        <widget class="QGroupBox" name="groupBox_32">
+                         <property name="title">
+                          <string/>
+                         </property>
+                         <layout class="QHBoxLayout" name="horizontalLayout_27">
+                          <item>
+                           <layout class="QHBoxLayout" name="horizontalLayout_26">
+                            <item>
+                             <widget class="QLabel" name="label_59">
+                              <property name="text">
+                               <string>Heating</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item>
+                             <widget class="QRadioButton" name="temperature_bool_heating_manual">
+                              <property name="text">
+                               <string>On</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item>
+                             <widget class="QRadioButton" name="temperature_bool_heating_manual_2">
+                              <property name="text">
+                               <string>Off</string>
+                              </property>
+                              <property name="checked">
+                               <bool>true</bool>
+                              </property>
+                             </widget>
+                            </item>
+                           </layout>
+                          </item>
+                         </layout>
+                        </widget>
+                       </item>
+                      </layout>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+               </layout>
+              </widget>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="tab_5">
+         <attribute name="title">
+          <string>Hardware</string>
+         </attribute>
+         <layout class="QHBoxLayout" name="horizontalLayout_28">
+          <item>
+           <layout class="QVBoxLayout" name="verticalLayout_11">
+            <item>
+             <widget class="QTabWidget" name="tabWidget_3">
+              <property name="currentIndex">
+               <number>1</number>
+              </property>
+              <widget class="QWidget" name="tab_9">
+               <attribute name="title">
+                <string>GPIO</string>
+               </attribute>
+               <layout class="QHBoxLayout" name="horizontalLayout_23">
+                <item>
+                 <layout class="QGridLayout" name="gridLayout_19">
+                  <item row="3" column="0">
+                   <widget class="QLabel" name="label_50">
+                    <property name="text">
+                     <string>Temperature (1wire)</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="4" column="0">
+                   <widget class="QLabel" name="label_51">
+                    <property name="text">
+                     <string>Humidity inside</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="0">
+                   <widget class="QLabel" name="label_48">
+                    <property name="text">
+                     <string>Light sensor 2</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="2" column="0">
+                   <widget class="QLabel" name="label_49">
+                    <property name="text">
+                     <string>Light sensor outside</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="0">
+                   <widget class="QLabel" name="label_47">
+                    <property name="text">
+                     <string>Light sensor 1</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="2">
+                   <widget class="QLabel" name="label_52">
+                    <property name="text">
+                     <string>Soil moisture 1</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="1">
+                   <widget class="QSpinBox" name="spinBox_13"/>
+                  </item>
+                  <item row="4" column="2">
+                   <widget class="QLabel" name="label_56">
+                    <property name="text">
+                     <string>Soil moisture outside</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="2" column="2">
+                   <widget class="QLabel" name="label_54">
+                    <property name="text">
+                     <string>Soil moisture 3</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="2">
+                   <widget class="QLabel" name="label_53">
+                    <property name="text">
+                     <string>Soil moisture 2</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="3" column="1">
+                   <widget class="QSpinBox" name="spinBox_16"/>
+                  </item>
+                  <item row="4" column="1">
+                   <widget class="QSpinBox" name="spinBox_17"/>
+                  </item>
+                  <item row="2" column="1">
+                   <widget class="QSpinBox" name="spinBox_15"/>
+                  </item>
+                  <item row="1" column="1">
+                   <widget class="QSpinBox" name="spinBox_14"/>
+                  </item>
+                  <item row="3" column="2">
+                   <widget class="QLabel" name="label_55">
+                    <property name="text">
+                     <string>Soil moisture 4</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="3">
+                   <widget class="QSpinBox" name="spinBox_18"/>
+                  </item>
+                  <item row="1" column="3">
+                   <widget class="QSpinBox" name="spinBox_19"/>
+                  </item>
+                  <item row="3" column="3">
+                   <widget class="QSpinBox" name="spinBox_21"/>
+                  </item>
+                  <item row="4" column="3">
+                   <widget class="QSpinBox" name="spinBox_22"/>
+                  </item>
+                  <item row="2" column="3">
+                   <widget class="QSpinBox" name="spinBox_20"/>
+                  </item>
+                  <item row="5" column="1">
+                   <widget class="QSpinBox" name="spinBox_24"/>
+                  </item>
+                  <item row="5" column="0">
+                   <widget class="QLabel" name="label_64">
+                    <property name="text">
+                     <string>Humidity outside</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="5" column="2">
+                   <widget class="QLabel" name="label_65">
+                    <property name="text">
+                     <string>Rainfall</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="5" column="3">
+                   <widget class="QSpinBox" name="spinBox_25"/>
+                  </item>
+                 </layout>
+                </item>
+               </layout>
+              </widget>
+              <widget class="QWidget" name="tab_10">
+               <attribute name="title">
+                <string>Various</string>
+               </attribute>
+               <layout class="QHBoxLayout" name="horizontalLayout_29">
+                <item>
+                 <layout class="QGridLayout" name="gridLayout_27">
+                  <item row="0" column="0">
+                   <widget class="QGroupBox" name="groupBox_20">
+                    <property name="title">
+                     <string/>
+                    </property>
+                    <layout class="QHBoxLayout" name="horizontalLayout_35">
+                     <item>
+                      <layout class="QHBoxLayout" name="horizontalLayout_34">
+                       <item>
+                        <widget class="QLabel" name="label_62">
+                         <property name="text">
+                          <string>Sensor read/log frequency</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QSpinBox" name="hardware_settings_read_frequency">
+                         <property name="value">
+                          <number>15</number>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QLabel" name="label_63">
+                         <property name="text">
+                          <string>sec</string>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+               </layout>
+              </widget>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>30</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QToolBar" name="toolBar">
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
+  <action name="actionShow_log_files">
+   <property name="text">
+    <string>Show log files</string>
+   </property>
+  </action>
+  <action name="actionClose">
+   <property name="text">
+    <string>Close</string>
+   </property>
+  </action>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>MplWidget</class>
+   <extends>QWidget</extends>
+   <header>mplwidget</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>
