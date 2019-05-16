@@ -15,7 +15,7 @@ from matplotlib import dates
 import numpy as np
 from datetime import datetime
 import configparser
-from Tab_Widget_Main_scailing_01 import Ui_MainWindow
+from RPGH_main_gui import Ui_MainWindow
 
 sys.path.append('..')
 
