@@ -30,37 +30,37 @@ cfg.read('settings_config_parser.py')
 light_min = cfg.getint('light', 'light_min')
 light_max = cfg.getint('light', 'light_max')
 
-light_time_on_to_convert = cfg.get('light', 'light_time_on')
+light_time_on_to_convert = cfg.get('light', 'time_on')
 light_time_on = datetime.strptime(light_time_on_to_convert, '%H:%M').time()
 
-light_time_off_to_convert = cfg.get('light', 'light_time_off')
+light_time_off_to_convert = cfg.get('light', 'time_off')
 light_time_off = datetime.strptime(light_time_off_to_convert, '%H:%M').time()
 
-light_rgb_red = cfg.getint('light', 'light_rgb_red')
-light_rgb_green = cfg.getint('light', 'light_rgb_green')
-light_rgb_blue = cfg.getint('light', 'light_rgb_blue')
-light_normalise = cfg.getboolean('light', 'light_normalise')
+light_rgb_red = cfg.getint('light', 'rgb_red')
+light_rgb_green = cfg.getint('light', 'rgb_green')
+light_rgb_blue = cfg.getint('light', 'rgb_blue')
+light_normalise = cfg.getboolean('light', 'bool_normalise')
 
-light_alert = cfg.getboolean('light', 'light_normalise')
+light_alert = cfg.getboolean('light', 'bool_normalise')
 
 # temperature managenent
 temp_min = cfg.getint('temperature', 'temp_min')
 temp_max = cfg.getint('temperature', 'temp_max')
 
-temp_heating_on_to_convert = cfg.get('temperature', 'temp_heating_on')
+temp_heating_on_to_convert = cfg.get('temperature', 'time_heating_on')
 temp_heating_on = datetime.strptime(temp_heating_on_to_convert, '%H:%M').time()
 
-temp_heating_off_to_convert = cfg.get('temperature', 'temp_heating_off')
+temp_heating_off_to_convert = cfg.get('temperature', 'time_heating_off')
 temp_heating_off = datetime.strptime(temp_heating_off_to_convert, '%H:%M').time()
 
-temp_venting_on_to_convert = cfg.get('temperature', 'temp_venting_on')
+temp_venting_on_to_convert = cfg.get('temperature', 'time_venting_on')
 temp_venting_on = datetime.strptime(temp_venting_on_to_convert, '%H:%M').time()
 
-temp_venting_off_to_convert = cfg.get('temperature', 'temp_venting_off')
+temp_venting_off_to_convert = cfg.get('temperature', 'time_venting_off')
 temp_venting_off = datetime.strptime(temp_venting_off_to_convert, '%H:%M').time()
 
-temp_normalise = cfg.getboolean('temperature', 'temp_normalise')
-temp_alert = cfg.getboolean('temperature', 'temp_alert')
+temp_normalise = cfg.getboolean('temperature', 'bool_normalise')
+temp_alert = cfg.getboolean('temperature', 'bool_alert')
 
 
 fq = cfg.getfloat('hardware_settings', 'read_frequency')
