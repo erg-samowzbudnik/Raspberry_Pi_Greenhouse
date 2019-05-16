@@ -59,4 +59,4 @@ read_frequency = 55
 kp = 1.0
 ki = 0.0
 kd = 0.0
-
+dht_pin = 1

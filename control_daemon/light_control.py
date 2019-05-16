@@ -3,10 +3,10 @@
 
 '''  here lives part of the code that controls lights
 a lot depends on what kind of LED strip we're controling.
-best would be to use a MOSFET - we could have a fine grained control over the
-light strenght. Also we could have an RGB strip but those are more expensive
-and not really neccessary for a greenhouse setup. Therefore I'm going to go
-with plain white LED strip. YMMV.
+Guess we're going to use MOSFET for controling the light strenght - we could
+have a fine grained control over the light strenght. Also we could have an
+RGB strip but those are more expensive and not really neccessary for a
+greenhouse setup. Therefore I'm going to go with plain white LED strip. YMMV.
 Another note: it would be perhaps beneficial to employ PID.
 '''
 
@@ -20,13 +20,24 @@ import busio
 import adafruit_tsl2561
 # those are for the until_sunrise function
 import sys, os
-sys.path.append('..')
+import configparser
 from config_filez.light import SUNRISE, SUNSET, REQUIRED_LIGHT, RGB_SHIFT, LIGHT_PIN
 
-# there is an easier way below but it doesn't work for me for some reason
-# from ..config_filez import light_control
-# from light_control import SUNRISE, SUNSET, REQUIRED_LIGHT, RGB_SHIFT, LIGHT_PIN
+sys.path.append('..')
 
+# reading config file
+cfg = configparser.ConfigParser()
+config_f = ('../settings_config_parser.py')
+cfg.read(config_f)
+sunrise = cfg.getint('light', 'time_on')
+sunset = cfg.getint('light', 'time_off')
+light_min = cfg.getint('light', 'light_min')
+light_max = cfg.getint('light', 'light_max')
+red = cfg.getint('light', 'rgb_red')
+green = cfg.getint('light', 'rgb_green')
+blue = cfg.geting('light', 'rgb_blue')
+
+#rewrite light function so that it uses PID and configparser!
 
 def light():
     # t2 = 'SUNSET'
