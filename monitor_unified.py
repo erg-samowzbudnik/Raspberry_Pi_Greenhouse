@@ -2,7 +2,10 @@
 # -*- coding: utf-8 -*-
 
 """ Piece of code where we'll do the thermal reading from the sensors and
-writing to the log file """
+writing to the log files. Perhaps it would be better to write to a database?
+Author: uinarf
+Date: 21.05.2019
+"""
 
 import sys, os
 import glob
@@ -14,15 +17,17 @@ import adafruit_dht
 import board
 import busio
 import adafruit_tsl2561
-import configparser # import configparser
+import configparser
 
 sys.path.append('..')
 
 LOCAL_DIR = os.path.dirname(os.path.realpath(__file__)) + "/"
 
-cfg = configparser.ConfigParser()   # setting up configparser
-cfg.read('../settings_config_parser.py')   # reading defaults and settings
-fq = cfg.getfloat('hardware_settings', 'read_frequency')
+# setting up configparser
+cfg = configparser.ConfigParser()
+# reading defaults and settings
+cfg.read('settings_config_parser.py')
+fq = cfg.getint('hardware_settings', 'read_frequency')
 dht = cfg.getint('hardware_settings', 'dht_pin')
 
 hum_sensor = Adafruit_DHT.DHT11
@@ -30,98 +35,90 @@ hum_sensor = Adafruit_DHT.DHT11
 # comment out those two lines below if you don't have actual one wire sensors
 # installed and use a mock path - gotta create it first
 
-# os.system('modprobe w1-gpio') # loading w1-gpio module
-# os.system('modprobe w1-therm')    # loading w1 thermal sensor module
+ # loading w1-gpio module
+ os.system('modprobe w1-gpio')
+ # loading w1 thermal sensor module
+ os.system('modprobe w1-therm')
+
+
+# default path for temperature sensor logs
 
 temp_log = '../sensor_logs/temp.dat'    # default path for temperature sensor logs
 light_log = '../sensor_logs/light.dat'
 humidity_log = '../sensor_logs/humidity.dat'
 
-# below a moc path actual path to /sys/bus/w1/devices, uncoment as appropriate
+# below a moc path and actual path, un/comment as appropriate
 sens_files = glob.glob('../w1/devices/28-*/w1_slave')
 # sens_files = glob.glob('/sys/bus/w1/devices')
 
-# first we're opening and reading from sensors. w1 sensors will write to that
-# file
+"""
+Dealing with 1 wire temperature sensors.
+"""
 
 class Temperature:
-    def temp_raw():
-        for i in sens_files:
-            with open(i, 'r') as f:
-                lines = f.readlines()
-            return lines
-
-# here we're checking for read errors, formating the string and attempting to read temperature
 
     def temp():
-        tries = 0   # how many times we're attempting to read from sensor
-        reading = 'Error' # checking if crc checksum alright
-        temp = 'Err' # if crc wrong dupm temp as 'Err'
-        while reading !='YES' and tries < 10:
-            crc_line = lines[0]
-            reading = crc_line[-3:-1]
-            temp_line = lines[1]
-            tem = float(temp_line[-5:-1] / 1000)
-            time.sleep(0.2)
-            tries += 1
-        return temp
 
-# this one takes timestamp and temperature reading and writes that to a log
-# file
+        temp_list = []
+        for i in sens_files:
+            with open(i, 'r') as f:
+                tries = 0
+                reading = 'Error'
+# checking if crc checksum ok. if not temp is '-666', NaN
+                temp = '-666'
+                while reading !='YES' and tries < 10:
+                    line = f.readline()
+                    reading = line[-4:-1]
+                    line = f.readline()
+                    temp = float(line[-6:-1]) / 1000
+                    time.sleep(0.2)
+                    tries += 1
+                    temp_list.append(temp)
+        return temp_list
+
 
     def temp_write():
+
         timestamp = time.strftime("%d,%m,%Y,%X", localtime())
         while True:
             with open(temp_log, 'a') as f:
-                f.wite('{0} {1}'.format(timestamp, temp))
+                temp_str = ' '.join(str(i) for i in temp_list)
+                f.write('{0} {1}'.format(timestamp, temp_str))
             time.sleep(fq)
 
-
-"""This part deals with a DHT11 temperature and humidity sensor
+"""
+This part deals with a DHT11 temperature and humidity sensor
 """
 
 class Humidity:
-    def humidity_log():
-        # reading from given pin on the sensor
-        # that this read_retry thingie will do what it says and try and reread. to
-        # be checked
-        humidity, temperature = Adafruit_DHT.read_retry(hum_sensor, dht) # lets hope
-        # now we have to clean up data string for saving
+    def humidity():
+
+# To be checked: if this 'read_retry' function does what's on the label. What
+# about errors?
+        humidity, temperature = Adafruit_DHT.read_retry(hum_sensor, dht)
         hum_data = humidity.split('=')[1]
-        # adding a timestamp 
+        return hum_data
+
+
+    def humidity_write():
+
         timestamp = time.strftime("%d,%m,%Y,%X", localtime())
-        # opening log file, writing and sleeping for set amount of time
+
         with open(humidity_log, 'a') as f:
             f.write("{} {1}".format('timestamp', 'hum_dat'))
         time.sleep(fq)
-
+"""
+This part deals with tsl2561 sensor.
+"""
 
 class Light:
 
-#    light_log_file = './log_files/light_log.dat'
-#    # create the I2C bus
-#    i2c = busio.I2C(board.SCL, board.SDA)
-#    # create TSL2561 instance, passing in the I2C bus
-#    tsl = adafruit_tsl2561.TSL2561(i2c)
-#    # enable sensor
-#    tsl.enabled = True
-#
-#    def light()
-#        lux = tsl.lux()
-#        tries = 0
-#        timestamp = time.strftime("%d,%m,%Y,%X", localtime())
-#        if lux is not None and tries < 10:
-#            with open('light_log_file', 'rw') as f
-#                f.write("{0} {1}".format('timestamp', 'lux'))
-#        else:
-#            time.sleep(0.2)
-#            tries += 1
-#        time.sleep(fq)
-
-
-# This is a second take on that function I think perhaps more correct. Is it?
 
     def light_read():
+
+        i2c = busio.I2C(board.SCL, board.SDA)
+        tsl = adafruit_tsl2561.TSL2561(i2c)
+        tsl.enabled = True
         lux = tsl.lux()
         tries = 0
         timestamp = time.strftime("%d,%m,%Y,%X", localtime())
@@ -129,10 +126,11 @@ class Light:
             time.sleep(0.2)
             tries += 1
         elif lux is None and tries == 10:
-            lux = "Err"
+# report lux as a special NaN on read error
+            lux = "-666"
         else:
             lux is not None and tries < 10
-            return lux
+        return lux
 
     def light_write():
         with open(light_log, 'a') as f:

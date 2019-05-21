@@ -27,6 +27,10 @@ bool_normalise = True
 bool_alert = True
 bool_heating_manual = True
 bool_venting_manual = True
+kp = 1.0
+ki = 0.0
+kd = 0.0
+
 
 [humidity]
 trigers_sensors = False
@@ -51,12 +55,14 @@ bool_normalise = True
 bool_alert = True
 time_on = 05:00
 time_off = 20:20
-bool_manual_on = False
-bool_manual_off = True
-
-[hardware_settings]
-read_frequency = 55
+bool_manual = False
+#bool_manual_off = True
 kp = 1.0
 ki = 0.0
 kd = 0.0
+
+
+[hardware_settings]
+read_frequency = 55
 dht_pin = 1
+lp_pin = 0

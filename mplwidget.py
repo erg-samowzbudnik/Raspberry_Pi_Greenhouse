@@ -1,3 +1,12 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+This is matplotlib widget.
+Author: uinarf
+Date: 21.05.2019
+"""
+
+
 from PyQt5 import QtGui
 from PyQt5 import QtWidgets
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
