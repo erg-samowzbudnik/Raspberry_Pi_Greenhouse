@@ -1,9 +1,14 @@
 #!/usr/bin/env python3
 #-*- coding: utf-8 -*-
 
-# the ui file barfs because defined there mplwidget is not.
-# now I wrote the widget. thing barfs at the way we load the UI so here I'll
-# rewrite just the way it loads UI
+"""
+This is the main program starting the GUI, monitor and control deamons (TBI).
+Things to implement:
+- plot does not load, figure out why.
+- connect all the buttons
+Author: uinarf
+Date: 21.05.2019
+"""
 
 import sys, os
 from PyQt5 import QtCore, QtGui, QtWidgets, QtQuick, uic
