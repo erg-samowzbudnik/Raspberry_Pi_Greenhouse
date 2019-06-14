@@ -36,7 +36,13 @@ Written in Python3 with Qt5 frontend. Consists of: monitor daemon, control
 daemon, main program with gui.
 
 prerequisites:
+# for DHT11, DHT22 or AM2302:
+pip install Adafruit_DHT && cd Adafruit_DHT && python setup.py install
+# for tsl2561:
+pip install adafruit-circuitpython-tsl2561
+# we need this:
 pip install schedule
+
 
 3. Random notes:
 

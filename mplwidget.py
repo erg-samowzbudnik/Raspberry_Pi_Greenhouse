@@ -12,10 +12,14 @@ from PyQt5 import QtWidgets
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.figure import Figure
 
+#matplotlib.use('QT5Agg')
+
 class MplCanvas(FigureCanvas):
     def __init__(self):
         self.fig = Figure()
-        self.ax = self.fig.add_subplot(111)
+        self.ax = self.fig.add_subplot(311)
+        self.ax_1 = self.fig.add_subplot(312)
+        self.ax_2 = self.fig.add_subplot(313)
         FigureCanvas.__init__(self, self.fig)
         FigureCanvas.setSizePolicy(self,
                                     QtWidgets.QSizePolicy.Expanding,

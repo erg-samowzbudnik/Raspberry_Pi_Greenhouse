@@ -37,7 +37,9 @@ lp_pin = cfg.getint('hardware_settings', 'lp_pin')
 #green = cfg.getint('light', 'rgb_green')
 #blue = cfg.geting('light', 'rgb_blue')
 light_frequency = 100
-
+kp = cfg.getfloat('light', 'pid_kp')
+ki = cfg.getfloat('light', 'pid_ki')
+kd = cfg.getfloat('light', 'pid_kd')
 
 def light():
     now = time.time()
