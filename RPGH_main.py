@@ -22,7 +22,10 @@ Date: 21.05.2019
 """
 
 import sys, os
+from PyQt5.QtCore import Qt
 from PyQt5 import QtCore, QtGui, QtWidgets, QtQuick, uic
+#from PyQt5.QtGui import QKeySequence
+#from PyQt5.QtWidgets import QShortcut, QAction
 import matplotlib
 matplotlib.use('qt5agg')
 from matplotlib.figure import Figure
@@ -32,6 +35,10 @@ import numpy as np
 from datetime import datetime
 import configparser
 from RPGH_main_gui import Ui_MainWindow
+import pandas as pd
+from pandas.plotting import register_matplotlib_converters
+register_matplotlib_converters()
+
 
 # code from module below doesn't work unles on Pi, uncoment and test once there
 # from monitor_unified import Light.light_read
@@ -71,18 +78,23 @@ class DesignerMainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 # missing groupBox with sensor/time/off choice
         self.light_light_min.setValue(cfg.getint('light', 'light_min'))
         self.light_light_min.valueChanged.connect(self.write_light_min)
+        self.light_light_min.valueChanged.connect(self.mpl_replot)
 
         self.light_light_max.setValue(cfg.getint('light', 'light_max'))
         self.light_light_max.valueChanged.connect(self.write_light_max)
+        self.light_light_max.valueChanged.connect(self.mpl_replot)
 
         self.light_rgb_red.setValue(cfg.getint('light', 'rgb_red'))
         self.light_rgb_red.valueChanged.connect(self.write_light_rgb_red)
+        self.light_rgb_red.valueChanged.connect(self.mpl_replot)
 
         self.light_rgb_green.setValue(cfg.getint('light', 'rgb_green'))
         self.light_rgb_green.valueChanged.connect(self.write_light_rgb_green)
+        self.light_rgb_green.valueChanged.connect(self.mpl_replot)
 
         self.light_rgb_blue.setValue(cfg.getint('light', 'rgb_blue'))
         self.light_rgb_blue.valueChanged.connect(self.write_light_rgb_green)
+        self.light_rgb_blue.valueChanged.connect(self.mpl_replot)
 
 #        self.light_sensor_lcd_visible.display(light_current_visible)
 
@@ -90,15 +102,8 @@ class DesignerMainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
 #        self.light_sensor_lcd_infrared.display(light_current_infrared)
 
-# changed GUI, don't need those no more
-#        self.light_bool_normalise.setChecked(cfg.getboolean('light',
-#        'bool_normalise'))
-#        self.light_bool_normalise.clicked.connect(self.write_light_normalise)
-
         self.light_bool_alert.setChecked(cfg.getboolean('light', 'bool_alert'))
-#        self.light_bool_alert.clicked.connect(self.write_light_alert)
-# Those comented lines do not work. Check the sender?
-#       self.light_bool_alert.isChecked(self.write_light_normalise)
+        self.light_bool_alert.stateChanged.connect(self.write_light_alert)
 
         self.light_time_on.setTime(datetime.strptime(cfg.get('light',
         'light_time_on'), '%H:%M').time())
@@ -108,14 +113,25 @@ class DesignerMainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         'light_time_off'), '%H:%M').time())
         self.light_time_off.timeChanged.connect(self.write_light_time_off)
 
+# To be rewriten: code below doesn't work. We want to iterate through buttons
+# in a group rather than code them separately!
+#        self.light_trigers_off.setChecked(cfg.getboolean('light',
+#        'trigers_off'))
+#        self.light_trigers_off.toggled.connect(self.write_light_switch_off)
+#
+#        self.light_trigers_time.toggled.connect(self.write_light_switch_time)
+
+
 # temperature management tab
 # missing groupBox with sensor/time/off choice
         self.temperature_temp_min.setValue(cfg.getint('temperature', 'temp_min'))
         self.temperature_temp_min.valueChanged.connect(self.write_temp_min)
+        self.temperature_temp_min.valueChanged.connect(self.mpl_replot)
 
         self.temperature_temp_max.setValue(cfg.getint('temperature',
         'temp_max'))
         self.temperature_temp_max.valueChanged.connect(self.write_temp_max)
+        self.temperature_temp_max.valueChanged.connect(self.mpl_replot)
 
         self.temperature_time_heating_on.setTime(datetime.strptime(cfg.get('temperature',
         'time_heating_on'), '%H:%M').time())
@@ -133,31 +149,45 @@ class DesignerMainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         'time_venting_off'), '%H:%M').time())
         self.temperature_time_venting_off.timeChanged.connect(self.write_temp_vent_time_off)
 
+        self.temperature_bool_temp_alert.setChecked(cfg.getboolean('temperature',
+        'bool_alert'))
+        self.temperature_bool_temp_alert.stateChanged.connect(self.write_temp_alert)
 # humidity management tab
 # missing groupBox with sensor/off choice
         self.humidity_humidity_min.setValue(cfg.getint('humidity', 'humidity_min'))
         self.humidity_humidity_min.valueChanged.connect(self.write_hum_min)
+        self.humidity_humidity_min.valueChanged.connect(self.mpl_replot)
 
         self.humidity_humidity_max.setValue(cfg.getint('humidity', 'humidity_max'))
         self.humidity_humidity_max.valueChanged.connect(self.write_hum_max)
+        self.humidity_humidity_max.valueChanged.connect(self.mpl_replot)
+
+        self.humidity_bool_alert.setChecked(cfg.getboolean('humidity',
+        'bool_alert'))
+        self.humidity_bool_alert.stateChanged.connect(self.write_humidity_bool_alert)
 
 # water management tab
         self.water_soil_moisture_min.setValue(cfg.getint('water', 'soil_moisture_min'))
         self.water_soil_moisture_min.valueChanged.connect(self.write_soil_moisture_min)
+        self.water_soil_moisture_min.valueChanged.connect(self.mpl_replot)
 
         self.water_soil_moisture_max.setValue(cfg.getint('water', 'soil_moisture_max'))
         self.water_soil_moisture_max.valueChanged.connect(self.write_soil_moisture_max)
+        self.water_soil_moisture_max.valueChanged.connect(self.mpl_replot)
 
         self.water_time_of_watering.setTime(datetime.strptime(cfg.get('water',
         'time_of_watering'), '%H:%M').time())
-#        self.water_time_of_watering.valueChanged.connect()
+        self.water_time_of_watering.timeChanged.connect(self.write_watering_time)
 
         self.water_time_watering_duration.setTime(datetime.strptime(cfg.get('water',
         'time_watering_duration'), '%H:%M').time())
-#        self.water_time_watering_duration.valueChanged.connect()
+        self.water_time_watering_duration.timeChanged.connect(self.write_watering_duration)
 
         self.water_amount.setValue(cfg.getint('water', 'amount'))
-#        self.water_amount.valueChanged.connect()
+        self.water_amount.valueChanged.connect(self.write_watering_amount)
+
+        self.water_bool_alert.setChecked(cfg.getboolean('water', 'bool_alert'))
+        self.water_bool_alert.stateChanged.connect(self.write_water_bool_alert)
 
 # alerts tab
 
@@ -197,60 +227,62 @@ class DesignerMainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.manual_bool_vent_off.setChecked(cfg.getboolean('manual',
         'bool_vent_off'))
 
+
 # setting up mplwidget
         self.mplwidget()
 
-
     def mplwidget(self):
 
+# defining log files
         temp_log = 'sensor_logs/temperature_out.dat'
-#        temp_log = 'sensor_logs/temperature_out.dat'
-        time_format = '%d,%m,%Y,%X'
-        timestamp = []
-        temp_up = []
-        temp_down = []
-        temp_ground = []
-
-        with open(temp_log, 'r') as temperature:
-            for i, line in enumerate(temperature):
-                a, b, c, d = line.split(' ')
-                timestamp.append(datetime.strptime(a, time_format))
-                temp_up.append(float(b))
-                temp_down.append(float(c))
-                temp_ground.append(float(d))
-
-        time_format = '%d,%m,%Y,%X'
         light_log = 'sensor_logs/light_data.dat'
-        timestamp_1 = []
-        visible = []
-        broadband = []
-        infrared = []
-        with open(light_log, 'r') as light:
-            for j, lines in enumerate(light):
-                d, e, n, m = lines.split(' ')
-                timestamp_1.append(datetime.strptime(d, time_format))
-                visible.append(int(e))
-                broadband.append(int(n))
-                infrared.append(int(m))
-
-        time_format = '%d,%m,%Y,%X'
         hum_log = 'sensor_logs/hum_data_ordered.dat'
-        timestamp_2 = []
-        humid = []
-        with open(hum_log, 'r') as humidity:
-            for i, lines in enumerate(humidity):
-                a, b = lines.split(' ')
-                timestamp_2.append(datetime.strptime(a, time_format))
-                humid.append(float(b))
-
         moist_log = 'sensor_logs/soil_hum.dat'
-        timestamp_3 = []
-        moist = []
-        with open(moist_log, 'r') as moisture:
-            for i, lines in enumerate(moisture):
-                a, b = lines.split(' ')
-                timestamp_3.append(datetime.strptime(a, time_format))
-                moist.append(float(b))
+
+# defining time format
+        time_format = '%d,%m,%Y,%X'
+# unpacking data settings
+        temp_max = cfg.getint('temperature', 'temp_max')
+        temp_min = cfg.getint('temperature', 'temp_min')
+        light_max = cfg.getint('light', 'light_max')
+        light_min = cfg.getint('light', 'light_min')
+        humid_max = cfg.getint('humidity', 'humidity_max')
+        humid_min = cfg.getint('humidity', 'humidity_min')
+        soil_max = cfg.getint('water', 'soil_moisture_max')
+        soil_min = cfg.getint('water', 'soil_moisture_min')
+
+# unpacking temperature data
+# two styles of reading data, leave 'em here for future reference
+        temp_data = pd.read_csv(temp_log, header=None, delim_whitespace=True)
+        temp_data.columns = ['timestamp', 'temp_up', 'temp_down', 'temp_ground']
+        timestamp_temp = pd.to_datetime(pd.Series(temp_data.timestamp),
+        format=time_format)
+#        temp_up = temp_data['1']
+#        temp_down = temp_data['2']
+#        temp_ground = temp_data['3']
+
+# unpacking light data
+        light_data = pd.read_csv(light_log, header=None, delim_whitespace=True)
+        light_data.columns = ['0','1','2','3']
+        timestamp_1 = pd.to_datetime(pd.Series(light_data['0']), format=time_format)
+        broadband = light_data['1']
+        visible = light_data['2']
+        infrared = light_data['3']
+
+# unpacking humidity data
+        hum_data = pd.read_csv(hum_log, header=None, delim_whitespace=True)
+        hum_data.columns = ['0', '1']
+        timestamp_2 = pd.to_datetime(pd.Series(hum_data['0']),
+        format=time_format)
+        humid = hum_data['1']
+
+# unpacking soil moisture data
+        soil_m_data = pd.read_csv(moist_log, header=None,
+        delim_whitespace=True)
+        soil_m_data.columns = ['0', '1']
+        timestamp_3 = pd.to_datetime(pd.Series(light_data['0']),
+        format=time_format)
+        moist = soil_m_data['1']
 
 # this section is ready to be deployed in case there's an issue with displaying
 # datetime data. May have to specify datemin as something like but at the
@@ -280,43 +312,58 @@ class DesignerMainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.mpl.canvas.ax.set_ylabel('Temperature C')
         self.mpl.canvas.ax.grid(True)
 # ploting temperature data
-        self.mpl.canvas.ax.plot(timestamp, temp_up, c='red', ls=':',
+        self.mpl.canvas.ax.plot(timestamp_temp, temp_data.temp_up, c='red', ls=':',
         label='temp_up')
-        self.mpl.canvas.ax.plot(timestamp, temp_down, c='orange', ls='dotted',
+        self.mpl.canvas.ax.plot(timestamp_temp, temp_data.temp_down, c='orange', ls='dotted',
         label='temp_down')
-        self.mpl.canvas.ax.plot(timestamp, temp_ground, c='brown', ls='-',
+        self.mpl.canvas.ax.plot(timestamp_temp, temp_data.temp_ground, c='brown', ls='-',
         label='ground temperature')
-        self.mpl.canvas.ax.fill_between(timestamp, temp_up, temp_down)
+        self.mpl.canvas.ax.fill_between(timestamp_temp, temp_data.temp_up,
+        temp_data.temp_down)
+        self.mpl.canvas.ax.fill_between(timestamp_temp, temp_data.temp_up, temp_max,
+        where=temp_data.temp_up>=temp_max, edgecolor='red', facecolor='none', hatch='/',
+        interpolate=True)
+        self.mpl.canvas.ax.fill_between(timestamp_temp, temp_data.temp_down, temp_min,
+        where=temp_data.temp_down<=temp_min, edgecolor='red', facecolor='none',
+        hatch='/', interpolate=True)
         self.mpl.canvas.ax.legend()
 # adding light subplot
         self.mpl.canvas.ax_1.set_ylabel('Light lm')
         self.mpl.canvas.ax_1.grid(True)
-        self.mpl.canvas.ax_1.plot(timestamp_1, visible, c='cyan', ls='-.',
+        self.mpl.canvas.ax_1.plot(timestamp_1, broadband, c='cyan', ls='-.',
         label='broadband')
-        self.mpl.canvas.ax_1.plot(timestamp_1, broadband, c='orange', ls='-.',
+        self.mpl.canvas.ax_1.plot(timestamp_1, visible, c='orange', ls='-.',
         label='visible')
         self.mpl.canvas.ax_1.plot(timestamp_1, infrared, c='red', ls='-.',
         label='infrared')
         self.mpl.canvas.ax_1.legend()
+        self.mpl.canvas.ax_1.fill_between(timestamp_1, broadband, light_max,
+        where=broadband>=light_max, edgecolor='red', facecolor='none', hatch="/", interpolate=True)
+        self.mpl.canvas.ax_1.fill_between(timestamp_1, broadband, light_min,
+        where=broadband<=light_min, edgecolor='red', facecolor='none',
+        hatch='/', interpolate=True)
+
 # adding humidity subplot
         self.mpl.canvas.ax_2.set_ylabel('Humidity/watering %')
         self.mpl.canvas.ax_2.grid(True)
         self.mpl.canvas.ax_2.plot(timestamp_2, humid, c='blue', ls='--',
         label='humidity')
-# adding to it soil humidity data
+# adding to it soil moisture data
         self.mpl.canvas.ax_2.plot(timestamp_3, moist, c='navy', ls=' ',
         label='soil_moisture')
         self.mpl.canvas.ax_2.fill_between(timestamp_2, 0, moist)
+        self.mpl.canvas.ax_2.fill_between(timestamp_2, moist, soil_max,
+        where=moist>=humid_max, facecolor='none', edgecolor='red', hatch='/', interpolate=True)
+        self.mpl.canvas.ax_2.fill_between(timestamp_2, soil_min, moist,
+        where=moist<=humid_min, facecolor='none', edgecolor='red', hatch='/',
+        interpolate=True)
         self.mpl.canvas.ax_2.legend()
-# decorating
-# interestingly, line below seems not neccessary
-#        self.mpl.canvas.draw()
 
 # setting up weather station tab:
 # adding temperature plot
         self.mpl1.canvas.ax.set_ylabel('Temperature C')
         self.mpl1.canvas.ax.grid(True)
-        self.mpl1.canvas.ax.plot(timestamp, temp_up, c='orange', ls='-.',
+        self.mpl1.canvas.ax.plot(timestamp_temp, temp_data.temp_up, c='orange', ls='-.',
         label='temperature outdoors')
 # adding light plot
         self.mpl1.canvas.ax_1.set_ylabel('Light lm')
@@ -327,6 +374,15 @@ class DesignerMainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.mpl1.canvas.ax_2.set_ylabel('Humidity/rainfall %')
         self.mpl1.canvas.ax_2.grid(True)
         self.mpl1.canvas.ax_2.hist(humid, bins=24)
+
+# below function reploting graphs called upon detecting user input
+
+    def mpl_replot(self):
+        self.mpl.canvas.ax.clear()
+        self.mpl.canvas.ax_1.clear()
+        self.mpl.canvas.ax_2.clear()
+        self.mpl.canvas.draw_idle()
+        self.mplwidget()
 
 # defining light management ui write actions (could be rewriten, lots of
 # redundant code
@@ -367,6 +423,22 @@ class DesignerMainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         with open(config_f, 'w') as conffile:
             cfg.write(conffile)
 
+    def write_light_switch_off(self, state):
+        if state == Qt.Checked:
+            cfg.set('light', 'trigers_off', 'True')
+            cfg.set('light', 'trigers_clock', 'False')
+            cfg.set('light', 'trigers_sensors', 'False')
+        with open(config_f, 'w') as conffile:
+            cfg.write(conffile)
+
+    def write_light_switch_time(self, state):
+        if state == Qt.Checked:
+            cfg.set('light', 'trigers_off', 'False')
+            cfg.set('light', 'trigers_clock', 'True')
+            cfg.set('light', 'trigers_sensors', 'False')
+        with open(config_f, 'w') as conffile:
+            cfg.write(conffile)
+
 # Those QCheckBoxes do not seem to have a .value() property - what then?
 # changed GUI, don't need those no more
 #    def write_light_normalise(self):
@@ -376,12 +448,17 @@ class DesignerMainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 #        with open(config_f, 'w') as conffile:
 #            cfg.write(conffile)
 
-#    def write_light_alert(self):
+    def write_light_alert(self, state):
+        if state == Qt.Checked:
+            cfg.set('light', 'bool_alert', 'True')
+        else:
+            cfg.set('light', 'bool_alert', 'False')
+
 #        send = self.light_bool_alert.value()
 #        message = str(send)
 #        cfg.set('light', 'light_alert', message)
-#        with open(config_f, 'w') as conffile:
-#            cfg.write(conffile)
+        with open(config_f, 'w') as conffile:
+            cfg.write(conffile)
 
     def write_light_time_on(self):
         send = self.light_time_on.time()
@@ -441,35 +518,221 @@ class DesignerMainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         with open(config_f, 'w') as conffile:
             cfg.write(conffile)
 
+    def write_temp_alert(self, state):
+        if state == Qt.Checked:
+            cfg.set('temperature', 'bool_alert', 'True')
+        else:
+            pass
+# defining light management ui write actions (could be rewriten, lots of
+# redundant code
+
+    def write_light_min(self):
+        send = self.light_light_min.value()
+        message = str(send)
+        cfg.set('light', 'light_min', message)
+        with open(config_f, 'w') as conffile:
+            cfg.write(conffile)
+        return
+
+    def write_light_max(self):
+        send = self.light_light_max.value()
+        message = str(send)
+        cfg.set('light', 'light_max', message)
+        with open(config_f, 'w') as conffile:
+            cfg.write(conffile)
+
+    def write_light_rgb_red(self):
+        send = self.light_rgb_red.value()
+        message = str(send)
+        cfg.set('light', 'light_rgb_red', message)
+        with open(config_f, 'w') as conffile:
+            cfg.write(conffile)
+
+    def write_light_rgb_green(self):
+        send = self.light_rgb_green.value()
+        message = str(send)
+        cfg.set('light', 'light_rgb_green', message)
+        with open(config_f, 'w') as conffile:
+            cfg.write(conffile)
+
+    def write_light_rgb_blue(self):
+        send = self.light_rgb_blue.value()
+        message = str(send)
+        cfg.set('light', 'light_rgb_blue', message)
+        with open(config_f, 'w') as conffile:
+            cfg.write(conffile)
+
+    def write_light_switch_off(self, state):
+        if state == Qt.Checked:
+            cfg.set('light', 'trigers_off', 'True')
+            cfg.set('light', 'trigers_clock', 'False')
+            cfg.set('light', 'trigers_sensors', 'False')
+        with open(config_f, 'w') as conffile:
+            cfg.write(conffile)
+
+    def write_light_switch_time(self, state):
+        if state == Qt.Checked:
+            cfg.set('light', 'trigers_off', 'False')
+            cfg.set('light', 'trigers_clock', 'True')
+            cfg.set('light', 'trigers_sensors', 'False')
+        with open(config_f, 'w') as conffile:
+            cfg.write(conffile)
+
+# Those QCheckBoxes do not seem to have a .value() property - what then?
+# changed GUI, don't need those no more
+#    def write_light_normalise(self):
+#        send = self.light_bool_normalise.value()
+#        message = str(send)
+#        cfg.set('light', 'light_normalise', message)
+#        with open(config_f, 'w') as conffile:
+#            cfg.write(conffile)
+
+    def write_light_alert(self, state):
+        if state == Qt.Checked:
+            cfg.set('light', 'bool_alert', 'True')
+        else:
+            cfg.set('light', 'bool_alert', 'False')
+
+#        send = self.light_bool_alert.value()
+#        message = str(send)
+#        cfg.set('light', 'light_alert', message)
+        with open(config_f, 'w') as conffile:
+            cfg.write(conffile)
+
+    def write_light_time_on(self):
+        send = self.light_time_on.time()
+        message = send.toString(self.light_time_on.displayFormat())
+        cfg.set('light', 'light_time_on', message)
+        with open(config_f, 'w') as conffile:
+            cfg.write(conffile)
+
+    def write_light_time_off(self):
+        send = self.light_time_off.time()
+        message = send.toString(self.light_time_off.displayFormat())
+        cfg.set('light', 'light_time_off', message)
+        with open(config_f, 'w') as conffile:
+            cfg.write(conffile)
+
+# defining temperature management tab
+
+    def write_temp_min(self):
+        send = self.temperature_temp_min.value()
+        message = str(send)
+        cfg.set('temperature', 'temp_min', message)
+        with open(config_f, 'w') as conffile:
+            cfg.write(conffile)
+
+    def write_temp_max(self):
+        send = self.temperature_temp_max.value()
+        message = str(send)
+        cfg.set('temperature', 'temp_max', message)
+        with open(config_f, 'w') as conffile:
+            cfg.write(conffile)
+
+    def write_temp_heating_time_on(self):
+        send = self.temperature_time_heating_on.time()
+        message = send.toString(self.temperature_time_heating_on.displayFormat())
+        cfg.set('temperature', 'temp_heating_on', message)
+        with open(config_f, 'w') as conffile:
+            cfg.write(conffile)
+
+    def write_temp_heating_time_off(self):
+        send = self.temperature_time_heating_off.time()
+        message = send.toString(self.temperature_time_heating_off.displayFormat())
+        cfg.set('temperature', 'temp_heating_off', message)
+        with open(config_f, 'w') as conffile:
+            cfg.write(conffile)
+
+    def write_temp_vent_time_on(self):
+        send = self.temperature_time_venting_on.time()
+        message = send.toString(self.temperature_time_venting_on.displayFormat())
+        cfg.set('temperature', 'temp_vent_on', message)
+        with open(config_f, 'w') as conffile:
+            cfg.write(conffile)
+
+    def write_temp_vent_time_off(self):
+        send = self.temperature_time_venting_off.time()
+        message = send.toString(self.temperature_time_venting_off.displayFormat())
+        cfg.set('temperature', 'temp_vent_on', message)
+        with open(config_f, 'w') as conffile:
+            cfg.write(conffile)
+
+    def write_temp_alert(self, state):
+        if state == Qt.Checked:
+            cfg.set('temperature', 'bool_alert', 'True')
+        else:
+            cfg.set('temperature', 'bool_alert', 'False')
+        with open(config_f, 'w') as conffile:
+            cfg.write(conffile)
+
+
 # defining humidity management tab
     def write_hum_min(self):
-        send = self.hum_min.value()
+        send = self.humidity_humidity_min.value()
         message = str(send)
         cfg.set('humidity', 'humidity_min', message)
         with open(config_f, 'w') as conffile:
             cfg.write(conffile)
 
     def write_hum_max(self):
-        send = self.hum_max.value()
+        send = self.humidity_humidity_max.value()
         message = str(send)
         cfg.set('humidity', 'humidity_max', message)
         with open(config_f, 'w') as conffile:
             cfg.write(conffile)
 
+    def write_humidity_bool_alert(self, state):
+        if state == Qt.Checked:
+            cfg.set('humidity', 'bool_alert', 'True')
+        else:
+            cfg.set('humidity', 'bool_alert', 'False')
+        with open(config_f, 'w') as conffile:
+            cfg.write(conffile)
+
 # defining water management tab
     def write_soil_moisture_min(self):
-        send = self.soil_moisture_min.value()
+        send = self.water_soil_moisture_min.value()
         message = str(send)
         cfg.set('water', 'soil_moisture_min', message)
         with open(config_f, 'w') as conffile:
             cfg.write(conffile)
 
     def write_soil_moisture_max(self):
-        send = self.soil_moisture_max.value()
+        send = self.water_soil_moisture_max.value()
         message = str(send)
-        cfg.set('water', 'soil_moisture_min', message)
+        cfg.set('water', 'soil_moisture_max', message)
         with open(config_f, 'w') as conffile:
             cfg.write(conffile)
+
+    def write_water_bool_alert(self, state):
+        if state == Qt.Checked:
+            cfg.set('water', 'bool_alert', 'True')
+        else:
+            cfg.set('water', 'bool_alert', 'False')
+        with open(config_f, 'w') as conffile:
+            cfg.write(conffile)
+
+    def write_watering_time(self):
+        send = self.water_time_of_watering.time()
+        message = send.toString(self.water_time_of_watering.displayFormat())
+        cfg.set('water', 'time_of_watering', message)
+        with open(config_f, 'w') as conffile:
+            cfg.write(conffile)
+
+    def write_watering_duration(self):
+        send = self.water_time_watering_duration.time()
+        message = send.toString(self.water_time_of_watering.displayFormat())
+        cfg.set('water', 'time_watering_duration', message)
+        with open(config_f, 'w') as conffile:
+            cfg.write(conffile)
+
+    def write_watering_amount(self):
+        send = self.water_amount.value()
+        message = str(send)
+        cfg.set('water', 'amount', message)
+        with open(config_f, 'w') as conffile:
+            cfg.write(conffile)
+
 # defining hardware settings management tab
     def write_fq(self):
         send = self.hardware_settings_read_frequency.value()

@@ -31,17 +31,5 @@ class MplWidget(QtWidgets.QWidget):
         QtWidgets.QWidget.__init__(self, parent)
         self.canvas = MplCanvas()
         self.vbl = QtWidgets.QHBoxLayout()
-       # self.setLayout(self.vbl)
-        #self.layout = QtWidgets.QHBoxLayout()
-        #self.layout.addLayout(self.vbl,0)
         self.vbl.addWidget(self.canvas)
         self.setLayout(self.vbl)
-
-#class MplWidget(QtWidgets.QWidget):
-#    def __init__(self, parent = None):
-#        QtWidgets.QWidget.__init__(self, parent)
-#        self.canvas = MplCanvas()
-#        self.vbl = QtWidgets.QVBoxLayout()
-#        self.vbl.addLayout(self.canvas)
-#        self.setLayout(self.vbl)
-
