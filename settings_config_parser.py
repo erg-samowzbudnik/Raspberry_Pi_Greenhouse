@@ -10,20 +10,20 @@ time_watering_duration = 03:30
 bool_amount = True
 amount = 5
 bool_normalise = False
-bool_alert = False
+bool_alert = True
 bool_manual = True
 
 [temperature]
 trigers_sensors = False
 trigers_clock = False
 trigers_off = True
-temp_max = 33
+temp_max = 37
 temp_min = 23
 time_heating_on = 5:00
 time_heating_off = 5:30
 time_venting_on = 11:00
 time_venting_off = 14:00
-bool_alert = False
+bool_alert = True
 bool_heating_manual = True
 bool_venting_manual = True
 kp = 1.0
@@ -38,27 +38,30 @@ humidity_max = 35
 humidity_min = 20
 bool_vent = False
 bool_restrict_water = False
-bool_alert = False
+bool_alert = True
 
 [light]
 trigers_sensors = False
 trigers_clock = False
 trigers_off = True
 light_min = 2500
-light_max = 4000
+light_max = 4336
 rgb_red = 250
 rgb_green = 255
 rgb_blue = 255
-bool_alert = False
+bool_alert = True
 time_on = 05:00
 time_off = 20:20
 bool_manual = False
-kp = 1.0
+control_onof = False
+control_pid = True
+kp = 0.9500000000000097
 ki = 0.0
 kd = 0.0
 light_rgb_red = 249
 light_time_on = 23:00
 light_time_off = 23:22
+light_kp = 2.0
 
 [alerts]
 bool_on_screen = True

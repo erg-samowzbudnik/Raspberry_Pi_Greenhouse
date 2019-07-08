@@ -23,7 +23,7 @@
       <item>
        <widget class="QTabWidget" name="tabWidget">
         <property name="currentIndex">
-         <number>1</number>
+         <number>0</number>
         </property>
         <widget class="QWidget" name="mpl_tab">
          <attribute name="title">
@@ -271,16 +271,6 @@
                 </item>
                </layout>
               </widget>
-              <widget class="QWidget" name="tab_12">
-               <attribute name="title">
-                <string>Page</string>
-               </attribute>
-               <layout class="QHBoxLayout" name="horizontalLayout_70">
-                <item>
-                 <layout class="QGridLayout" name="gridLayout_40"/>
-                </item>
-               </layout>
-              </widget>
              </widget>
             </item>
            </layout>
@@ -358,17 +348,10 @@
                   <layout class="QHBoxLayout" name="horizontalLayout_5">
                    <item>
                     <layout class="QGridLayout" name="gridLayout_4">
-                     <item row="1" column="0">
-                      <widget class="QLabel" name="label_2">
+                     <item row="1" column="2">
+                      <widget class="QLabel" name="label_4">
                        <property name="text">
-                        <string>Min</string>
-                       </property>
-                      </widget>
-                     </item>
-                     <item row="1" column="1">
-                      <widget class="QSpinBox" name="light_light_min">
-                       <property name="maximum">
-                        <number>10000</number>
+                        <string>lm</string>
                        </property>
                       </widget>
                      </item>
@@ -376,6 +359,13 @@
                       <widget class="QSpinBox" name="light_light_max">
                        <property name="maximum">
                         <number>10000</number>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="1" column="0">
+                      <widget class="QLabel" name="label_2">
+                       <property name="text">
+                        <string>Min</string>
                        </property>
                       </widget>
                      </item>
@@ -393,10 +383,10 @@
                        </property>
                       </widget>
                      </item>
-                     <item row="1" column="2">
-                      <widget class="QLabel" name="label_4">
-                       <property name="text">
-                        <string>lm</string>
+                     <item row="1" column="1">
+                      <widget class="QSpinBox" name="light_light_min">
+                       <property name="maximum">
+                        <number>10000</number>
                        </property>
                       </widget>
                      </item>
@@ -643,14 +633,20 @@
                       </widget>
                      </item>
                      <item row="0" column="1">
-                      <widget class="QDoubleSpinBox" name="doubleSpinBox">
+                      <widget class="QDoubleSpinBox" name="light_pid_control_kp">
+                       <property name="maximum">
+                        <double>5.000000000000000</double>
+                       </property>
+                       <property name="singleStep">
+                        <double>0.050000000000000</double>
+                       </property>
                        <property name="value">
                         <double>1.000000000000000</double>
                        </property>
                       </widget>
                      </item>
                      <item row="2" column="1">
-                      <widget class="QDoubleSpinBox" name="doubleSpinBox_3"/>
+                      <widget class="QDoubleSpinBox" name="light_pid_control_kd"/>
                      </item>
                      <item row="2" column="0">
                       <widget class="QLabel" name="label_81">
@@ -690,10 +686,18 @@
                       </widget>
                      </item>
                      <item row="0" column="1">
-                      <widget class="QTimeEdit" name="light_time_on"/>
+                      <widget class="QTimeEdit" name="light_time_on">
+                       <property name="enabled">
+                        <bool>false</bool>
+                       </property>
+                      </widget>
                      </item>
                      <item row="1" column="1">
-                      <widget class="QTimeEdit" name="light_time_off"/>
+                      <widget class="QTimeEdit" name="light_time_off">
+                       <property name="enabled">
+                        <bool>false</bool>
+                       </property>
+                      </widget>
                      </item>
                     </layout>
                    </item>
@@ -795,6 +799,9 @@
                   </item>
                   <item row="3" column="1">
                    <widget class="QGroupBox" name="groupBox_9">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
                     <property name="title">
                      <string>Heating time</string>
                     </property>
@@ -804,7 +811,7 @@
                        <item row="0" column="0">
                         <widget class="QLabel" name="label_14">
                          <property name="enabled">
-                          <bool>true</bool>
+                          <bool>false</bool>
                          </property>
                          <property name="text">
                           <string>On</string>
@@ -814,7 +821,7 @@
                        <item row="1" column="0">
                         <widget class="QLabel" name="label_15">
                          <property name="enabled">
-                          <bool>true</bool>
+                          <bool>false</bool>
                          </property>
                          <property name="text">
                           <string>Off</string>
@@ -824,14 +831,14 @@
                        <item row="0" column="1">
                         <widget class="QTimeEdit" name="temperature_time_heating_on">
                          <property name="enabled">
-                          <bool>true</bool>
+                          <bool>false</bool>
                          </property>
                         </widget>
                        </item>
                        <item row="1" column="1">
                         <widget class="QTimeEdit" name="temperature_time_heating_off">
                          <property name="enabled">
-                          <bool>true</bool>
+                          <bool>false</bool>
                          </property>
                         </widget>
                        </item>
@@ -860,141 +867,11 @@
                     </layout>
                    </widget>
                   </item>
-                  <item row="0" column="3">
-                   <widget class="QGroupBox" name="groupBox_25">
-                    <property name="sizePolicy">
-                     <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
-                      <horstretch>0</horstretch>
-                      <verstretch>0</verstretch>
-                     </sizepolicy>
-                    </property>
-                    <property name="title">
-                     <string>Current temperature</string>
-                    </property>
-                    <layout class="QHBoxLayout" name="horizontalLayout_33">
-                     <item>
-                      <layout class="QGridLayout" name="gridLayout_24">
-                       <item row="1" column="0">
-                        <widget class="QLabel" name="label_33">
-                         <property name="text">
-                          <string>1w up 2</string>
-                         </property>
-                        </widget>
-                       </item>
-                       <item row="2" column="1">
-                        <widget class="QLCDNumber" name="temp_sensor_3_lcdNumber_14"/>
-                       </item>
-                       <item row="2" column="0">
-                        <widget class="QLabel" name="label_43">
-                         <property name="text">
-                          <string>1w down 1</string>
-                         </property>
-                        </widget>
-                       </item>
-                       <item row="1" column="1">
-                        <widget class="QLCDNumber" name="temp_sensor_2_lcdNumber_5"/>
-                       </item>
-                       <item row="3" column="0">
-                        <widget class="QLabel" name="label_44">
-                         <property name="text">
-                          <string>1w down 2</string>
-                         </property>
-                        </widget>
-                       </item>
-                       <item row="0" column="1">
-                        <widget class="QLCDNumber" name="temp_sensor_1_lcdNumber_4"/>
-                       </item>
-                       <item row="4" column="1">
-                        <widget class="QLCDNumber" name="temp_sensor_outside_lcdNumber_6"/>
-                       </item>
-                       <item row="3" column="1">
-                        <widget class="QLCDNumber" name="temp_sensor_4_lcdNumber_15"/>
-                       </item>
-                       <item row="0" column="0">
-                        <widget class="QLabel" name="label_32">
-                         <property name="text">
-                          <string>1w up 1</string>
-                         </property>
-                        </widget>
-                       </item>
-                       <item row="4" column="0">
-                        <widget class="QLabel" name="label_34">
-                         <property name="text">
-                          <string>dht</string>
-                         </property>
-                        </widget>
-                       </item>
-                      </layout>
-                     </item>
-                    </layout>
-                   </widget>
-                  </item>
-                  <item row="3" column="2">
-                   <widget class="QGroupBox" name="groupBox_34">
-                    <property name="title">
-                     <string>PID controls</string>
-                    </property>
-                    <layout class="QHBoxLayout" name="horizontalLayout_62">
-                     <item>
-                      <layout class="QGridLayout" name="gridLayout_13">
-                       <item row="1" column="1">
-                        <widget class="QDoubleSpinBox" name="doubleSpinBox_5">
-                         <property name="enabled">
-                          <bool>true</bool>
-                         </property>
-                        </widget>
-                       </item>
-                       <item row="2" column="1">
-                        <widget class="QDoubleSpinBox" name="doubleSpinBox_6">
-                         <property name="enabled">
-                          <bool>true</bool>
-                         </property>
-                        </widget>
-                       </item>
-                       <item row="0" column="1">
-                        <widget class="QDoubleSpinBox" name="doubleSpinBox_4">
-                         <property name="enabled">
-                          <bool>true</bool>
-                         </property>
-                        </widget>
-                       </item>
-                       <item row="0" column="0">
-                        <widget class="QLabel" name="label_82">
-                         <property name="enabled">
-                          <bool>true</bool>
-                         </property>
-                         <property name="text">
-                          <string>Kp</string>
-                         </property>
-                        </widget>
-                       </item>
-                       <item row="1" column="0">
-                        <widget class="QLabel" name="label_83">
-                         <property name="enabled">
-                          <bool>true</bool>
-                         </property>
-                         <property name="text">
-                          <string>Ki</string>
-                         </property>
-                        </widget>
-                       </item>
-                       <item row="2" column="0">
-                        <widget class="QLabel" name="label_84">
-                         <property name="enabled">
-                          <bool>true</bool>
-                         </property>
-                         <property name="text">
-                          <string>Kd</string>
-                         </property>
-                        </widget>
-                       </item>
-                      </layout>
-                     </item>
-                    </layout>
-                   </widget>
-                  </item>
                   <item row="0" column="2">
                    <widget class="QGroupBox" name="groupBox_6">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
                     <property name="title">
                      <string>Venting time</string>
                     </property>
@@ -1026,33 +903,150 @@
                     </layout>
                    </widget>
                   </item>
-                  <item row="3" column="3">
-                   <widget class="QGroupBox" name="groupBox_36">
+                  <item row="0" column="3">
+                   <widget class="QGroupBox" name="groupBox_25">
                     <property name="title">
-                     <string>Last 24h extremes</string>
+                     <string>Current temp</string>
                     </property>
                     <layout class="QHBoxLayout" name="horizontalLayout_65">
                      <item>
                       <layout class="QGridLayout" name="gridLayout_35">
-                       <item row="0" column="0">
-                        <widget class="QLabel" name="label_86">
+                       <item row="3" column="0">
+                        <widget class="QLabel" name="label_44">
                          <property name="text">
-                          <string>Maximum</string>
+                          <string>Today min</string>
                          </property>
                         </widget>
                        </item>
-                       <item row="1" column="0">
-                        <widget class="QLabel" name="label_87">
-                         <property name="text">
-                          <string>Minimum</string>
-                         </property>
-                        </widget>
+                       <item row="1" column="1">
+                        <widget class="QLCDNumber" name="lcdNumber_13"/>
                        </item>
                        <item row="0" column="1">
                         <widget class="QLCDNumber" name="lcdNumber_8"/>
                        </item>
+                       <item row="3" column="1">
+                        <widget class="QLCDNumber" name="lcdNumber_20"/>
+                       </item>
+                       <item row="2" column="1">
+                        <widget class="QLCDNumber" name="lcdNumber_19"/>
+                       </item>
+                       <item row="0" column="0">
+                        <widget class="QLabel" name="label_32">
+                         <property name="text">
+                          <string>Up</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="2" column="0">
+                        <widget class="QLabel" name="label_43">
+                         <property name="text">
+                          <string>Today max</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="1" column="0">
+                        <widget class="QLabel" name="label_33">
+                         <property name="text">
+                          <string>Down</string>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                  <item row="3" column="3">
+                   <widget class="QGroupBox" name="groupBox_34">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
+                    <property name="title">
+                     <string>PID controls</string>
+                    </property>
+                    <layout class="QHBoxLayout" name="horizontalLayout_62">
+                     <item>
+                      <layout class="QGridLayout" name="gridLayout_13">
                        <item row="1" column="1">
-                        <widget class="QLCDNumber" name="lcdNumber_13"/>
+                        <widget class="QDoubleSpinBox" name="doubleSpinBox_5">
+                         <property name="enabled">
+                          <bool>false</bool>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="2" column="1">
+                        <widget class="QDoubleSpinBox" name="doubleSpinBox_6">
+                         <property name="enabled">
+                          <bool>false</bool>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="0" column="1">
+                        <widget class="QDoubleSpinBox" name="doubleSpinBox_4">
+                         <property name="enabled">
+                          <bool>false</bool>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="0" column="0">
+                        <widget class="QLabel" name="label_82">
+                         <property name="enabled">
+                          <bool>false</bool>
+                         </property>
+                         <property name="text">
+                          <string>Kp</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="1" column="0">
+                        <widget class="QLabel" name="label_83">
+                         <property name="enabled">
+                          <bool>false</bool>
+                         </property>
+                         <property name="text">
+                          <string>Ki</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="2" column="0">
+                        <widget class="QLabel" name="label_84">
+                         <property name="enabled">
+                          <bool>false</bool>
+                         </property>
+                         <property name="text">
+                          <string>Kd</string>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                  <item row="3" column="2">
+                   <widget class="QGroupBox" name="groupBox_36">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
+                    <property name="title">
+                     <string>Control method</string>
+                    </property>
+                    <layout class="QHBoxLayout" name="horizontalLayout_33">
+                     <item>
+                      <layout class="QGridLayout" name="gridLayout_24">
+                       <item row="0" column="0">
+                        <widget class="QRadioButton" name="temperature_control_onoff">
+                         <property name="text">
+                          <string>On/Off</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="1" column="0">
+                        <widget class="QRadioButton" name="temperature_control_pid">
+                         <property name="text">
+                          <string>PID</string>
+                         </property>
+                        </widget>
                        </item>
                       </layout>
                      </item>
@@ -1198,6 +1192,9 @@
                   </item>
                   <item row="2" column="1">
                    <widget class="QGroupBox" name="groupBox_12">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
                     <property name="title">
                      <string>Regulate by:</string>
                     </property>
@@ -1254,123 +1251,20 @@
                <layout class="QHBoxLayout" name="horizontalLayout_19">
                 <item>
                  <layout class="QGridLayout" name="gridLayout_14">
-                  <item row="0" column="2">
-                   <widget class="QGroupBox" name="groupBox_19">
+                  <item row="2" column="0">
+                   <widget class="QGroupBox" name="groupBox_17">
                     <property name="title">
-                     <string>Current soil moisture</string>
+                     <string>Action on breach</string>
                     </property>
-                    <layout class="QHBoxLayout" name="horizontalLayout_22">
+                    <layout class="QHBoxLayout" name="horizontalLayout_21">
                      <item>
-                      <layout class="QGridLayout" name="gridLayout_26">
-                       <item row="2" column="0">
-                        <widget class="QLabel" name="label_40">
+                      <layout class="QVBoxLayout" name="verticalLayout_8">
+                       <item>
+                        <widget class="QCheckBox" name="water_bool_alert">
                          <property name="text">
-                          <string>Sensor 3</string>
+                          <string>Alert</string>
                          </property>
                         </widget>
-                       </item>
-                       <item row="1" column="1">
-                        <widget class="QLCDNumber" name="lcdNumber_10"/>
-                       </item>
-                       <item row="3" column="1">
-                        <widget class="QLCDNumber" name="lcdNumber_12"/>
-                       </item>
-                       <item row="1" column="0">
-                        <widget class="QLabel" name="label_39">
-                         <property name="text">
-                          <string>Sensor 2</string>
-                         </property>
-                        </widget>
-                       </item>
-                       <item row="3" column="0">
-                        <widget class="QLabel" name="label_41">
-                         <property name="text">
-                          <string>Sensor 4</string>
-                         </property>
-                        </widget>
-                       </item>
-                       <item row="2" column="1">
-                        <widget class="QLCDNumber" name="lcdNumber_11"/>
-                       </item>
-                       <item row="0" column="0">
-                        <widget class="QLabel" name="label_38">
-                         <property name="text">
-                          <string>Sensor 1</string>
-                         </property>
-                        </widget>
-                       </item>
-                       <item row="0" column="1">
-                        <widget class="QLCDNumber" name="lcdNumber_9"/>
-                       </item>
-                      </layout>
-                     </item>
-                    </layout>
-                   </widget>
-                  </item>
-                  <item row="0" column="0">
-                   <widget class="QGroupBox" name="groupBox_14">
-                    <property name="title">
-                     <string>Watering by:</string>
-                    </property>
-                    <layout class="QHBoxLayout" name="horizontalLayout_13">
-                     <item>
-                      <layout class="QGridLayout" name="gridLayout_15">
-                       <item row="1" column="0">
-                        <widget class="QRadioButton" name="water_trigers_time">
-                         <property name="text">
-                          <string>Time</string>
-                         </property>
-                        </widget>
-                       </item>
-                       <item row="0" column="0">
-                        <widget class="QRadioButton" name="water_trigers_sensors">
-                         <property name="text">
-                          <string>Sensors</string>
-                         </property>
-                        </widget>
-                       </item>
-                       <item row="2" column="0">
-                        <widget class="QRadioButton" name="water_trigers_off">
-                         <property name="text">
-                          <string>Off</string>
-                         </property>
-                         <property name="checked">
-                          <bool>true</bool>
-                         </property>
-                        </widget>
-                       </item>
-                      </layout>
-                     </item>
-                    </layout>
-                   </widget>
-                  </item>
-                  <item row="2" column="2">
-                   <widget class="QGroupBox" name="groupBox_29">
-                    <property name="title">
-                     <string>Water used</string>
-                    </property>
-                    <layout class="QHBoxLayout" name="horizontalLayout_47">
-                     <item>
-                      <layout class="QGridLayout" name="gridLayout_30">
-                       <item row="0" column="0">
-                        <widget class="QLabel" name="label_67">
-                         <property name="text">
-                          <string>Last 24h</string>
-                         </property>
-                        </widget>
-                       </item>
-                       <item row="1" column="0">
-                        <widget class="QLabel" name="label_68">
-                         <property name="text">
-                          <string>Last week</string>
-                         </property>
-                        </widget>
-                       </item>
-                       <item row="0" column="1">
-                        <widget class="QLCDNumber" name="lcdNumber_16"/>
-                       </item>
-                       <item row="1" column="1">
-                        <widget class="QLCDNumber" name="lcdNumber_17"/>
                        </item>
                       </layout>
                      </item>
@@ -1424,8 +1318,97 @@
                     </layout>
                    </widget>
                   </item>
+                  <item row="2" column="2">
+                   <widget class="QGroupBox" name="groupBox_29">
+                    <property name="title">
+                     <string>Water used</string>
+                    </property>
+                    <layout class="QHBoxLayout" name="horizontalLayout_47">
+                     <item>
+                      <layout class="QGridLayout" name="gridLayout_30">
+                       <item row="0" column="0">
+                        <widget class="QLabel" name="label_67">
+                         <property name="text">
+                          <string>Last 24h</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="1" column="0">
+                        <widget class="QLabel" name="label_68">
+                         <property name="text">
+                          <string>Last week</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="0" column="1">
+                        <widget class="QLCDNumber" name="lcdNumber_16"/>
+                       </item>
+                       <item row="1" column="1">
+                        <widget class="QLCDNumber" name="lcdNumber_17"/>
+                       </item>
+                      </layout>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                  <item row="0" column="2">
+                   <widget class="QGroupBox" name="groupBox_19">
+                    <property name="title">
+                     <string>Current soil moisture</string>
+                    </property>
+                    <layout class="QHBoxLayout" name="horizontalLayout_22">
+                     <item>
+                      <layout class="QGridLayout" name="gridLayout_26">
+                       <item row="2" column="0">
+                        <widget class="QLabel" name="label_40">
+                         <property name="text">
+                          <string>Sensor 3</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="1" column="1">
+                        <widget class="QLCDNumber" name="lcdNumber_10"/>
+                       </item>
+                       <item row="3" column="1">
+                        <widget class="QLCDNumber" name="lcdNumber_12"/>
+                       </item>
+                       <item row="1" column="0">
+                        <widget class="QLabel" name="label_39">
+                         <property name="text">
+                          <string>Sensor 2</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="3" column="0">
+                        <widget class="QLabel" name="label_41">
+                         <property name="text">
+                          <string>Sensor 4</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="2" column="1">
+                        <widget class="QLCDNumber" name="lcdNumber_11"/>
+                       </item>
+                       <item row="0" column="0">
+                        <widget class="QLabel" name="label_38">
+                         <property name="text">
+                          <string>Sensor 1</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="0" column="1">
+                        <widget class="QLCDNumber" name="lcdNumber_9"/>
+                       </item>
+                      </layout>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
                   <item row="2" column="1">
                    <widget class="QGroupBox" name="groupBox_15">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
                     <property name="title">
                      <string>Watering time and amount</string>
                     </property>
@@ -1498,22 +1481,35 @@
                     </layout>
                    </widget>
                   </item>
-                  <item row="2" column="0">
-                   <widget class="QGroupBox" name="groupBox_17">
+                  <item row="0" column="0">
+                   <widget class="QGroupBox" name="groupBox_14">
                     <property name="title">
-                     <string>Action on breach</string>
+                     <string>Watering by:</string>
                     </property>
-                    <layout class="QHBoxLayout" name="horizontalLayout_21">
+                    <layout class="QVBoxLayout" name="verticalLayout">
                      <item>
-                      <layout class="QVBoxLayout" name="verticalLayout_8">
-                       <item>
-                        <widget class="QCheckBox" name="water_bool_alert">
-                         <property name="text">
-                          <string>Alert</string>
-                         </property>
-                        </widget>
-                       </item>
-                      </layout>
+                      <widget class="QRadioButton" name="water_trigers_sensors">
+                       <property name="text">
+                        <string>Sensors</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QRadioButton" name="water_trigers_time">
+                       <property name="text">
+                        <string>Time</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QRadioButton" name="water_trigers_off">
+                       <property name="text">
+                        <string>Off</string>
+                       </property>
+                       <property name="checked">
+                        <bool>true</bool>
+                       </property>
+                      </widget>
                      </item>
                     </layout>
                    </widget>
@@ -1822,44 +1818,6 @@
                            </layout>
                           </item>
                          </layout>
-                        </widget>
-                       </item>
-                      </layout>
-                     </item>
-                    </layout>
-                   </widget>
-                  </item>
-                 </layout>
-                </item>
-               </layout>
-              </widget>
-              <widget class="QWidget" name="tab_11">
-               <attribute name="title">
-                <string>Presets</string>
-               </attribute>
-               <layout class="QHBoxLayout" name="horizontalLayout_68">
-                <item>
-                 <layout class="QGridLayout" name="gridLayout_38">
-                  <item row="0" column="0">
-                   <widget class="QGroupBox" name="groupBox_39">
-                    <property name="title">
-                     <string>GroupBox</string>
-                    </property>
-                    <layout class="QHBoxLayout" name="horizontalLayout_69">
-                     <item>
-                      <layout class="QGridLayout" name="gridLayout_39">
-                       <item row="0" column="0">
-                        <widget class="QListWidget" name="listWidget">
-                         <item>
-                          <property name="text">
-                           <string>preset peppers</string>
-                          </property>
-                         </item>
-                         <item>
-                          <property name="text">
-                           <string>preset tomatoes_1</string>
-                          </property>
-                         </item>
                         </widget>
                        </item>
                       </layout>
@@ -2230,257 +2188,33 @@
  <resources/>
  <connections>
   <connection>
-   <sender>temperature_trigers_sensors</sender>
+   <sender>light_trigers_sensors</sender>
    <signal>toggled(bool)</signal>
-   <receiver>groupBox_6</receiver>
-   <slot>setDisabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>119</x>
-     <y>199</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>493</x>
-     <y>235</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>temperature_trigers_off</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>groupBox_6</receiver>
-   <slot>setDisabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>119</x>
-     <y>297</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>493</x>
-     <y>235</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>temperature_trigers_off</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>groupBox_34</receiver>
-   <slot>setDisabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>119</x>
-     <y>297</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>493</x>
-     <y>450</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>temperature_trigers_time</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>groupBox_34</receiver>
-   <slot>setDisabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>119</x>
-     <y>248</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>493</x>
-     <y>450</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>temperature_trigers_sensors</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>groupBox_9</receiver>
-   <slot>setDisabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>119</x>
-     <y>199</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>306</x>
-     <y>450</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>temperature_trigers_off</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>groupBox_9</receiver>
-   <slot>setDisabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>119</x>
-     <y>297</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>306</x>
-     <y>450</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>light_trigers_time</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>groupBox_3</receiver>
+   <receiver>groupBox_38</receiver>
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
      <x>118</x>
-     <y>249</y>
+     <y>160</y>
     </hint>
     <hint type="destinationlabel">
-     <x>306</x>
+     <x>493</x>
      <y>439</y>
     </hint>
    </hints>
   </connection>
   <connection>
-   <sender>light_trigers_off</sender>
+   <sender>light_control_onoff</sender>
    <signal>toggled(bool)</signal>
    <receiver>groupBox_35</receiver>
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>118</x>
-     <y>299</y>
-    </hint>
-    <hint type="destinationlabel">
      <x>493</x>
-     <y>450</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>light_trigers_off</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>groupBox_3</receiver>
-   <slot>setDisabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>118</x>
-     <y>299</y>
+     <y>417</y>
     </hint>
     <hint type="destinationlabel">
-     <x>306</x>
-     <y>450</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>humidity_trigers_off</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>humidity_bool_vent</receiver>
-   <slot>setDisabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>150</x>
-     <y>282</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>150</x>
-     <y>431</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>humidity_trigers_off</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>humidity_bool_restrict_water</receiver>
-   <slot>setDisabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>150</x>
-     <y>282</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>150</x>
-     <y>497</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>humidity_trigers_sensors</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>humidity_bool_vent</receiver>
-   <slot>setChecked(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>150</x>
-     <y>216</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>150</x>
-     <y>431</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>humidity_trigers_sensors</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>humidity_bool_restrict_water</receiver>
-   <slot>setChecked(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>150</x>
-     <y>216</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>150</x>
-     <y>497</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>water_trigers_off</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>groupBox_15</receiver>
-   <slot>setDisabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>150</x>
-     <y>297</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>150</x>
-     <y>450</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>water_trigers_sensors</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>groupBox_15</receiver>
-   <slot>setDisabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>150</x>
-     <y>199</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>150</x>
-     <y>450</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>light_trigers_off</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>groupBox_38</receiver>
-   <slot>setDisabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>118</x>
-     <y>270</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>493</x>
+     <x>681</x>
      <y>439</y>
     </hint>
    </hints>
@@ -2502,6 +2236,214 @@
    </hints>
   </connection>
   <connection>
+   <sender>light_trigers_off</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>groupBox_3</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>118</x>
+     <y>270</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>306</x>
+     <y>439</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>light_trigers_time</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>groupBox_3</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>118</x>
+     <y>215</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>306</x>
+     <y>439</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>temperature_trigers_off</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>groupBox_9</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>119</x>
+     <y>271</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>306</x>
+     <y>439</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>temperature_trigers_off</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>groupBox_6</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>119</x>
+     <y>271</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>493</x>
+     <y>202</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>temperature_trigers_time</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>groupBox_9</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>119</x>
+     <y>216</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>306</x>
+     <y>439</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>temperature_trigers_time</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>groupBox_6</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>119</x>
+     <y>216</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>493</x>
+     <y>202</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>temperature_trigers_sensors</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>groupBox_36</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>119</x>
+     <y>161</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>493</x>
+     <y>439</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>temperature_control_onoff</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>groupBox_34</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>493</x>
+     <y>416</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>680</x>
+     <y>439</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>temperature_control_pid</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>groupBox_34</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>493</x>
+     <y>489</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>680</x>
+     <y>439</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>light_trigers_off</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>groupBox_35</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>118</x>
+     <y>270</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>681</x>
+     <y>439</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>temperature_trigers_off</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>groupBox_34</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>119</x>
+     <y>271</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>680</x>
+     <y>439</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>light_trigers_off</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>groupBox_38</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>118</x>
+     <y>270</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>493</x>
+     <y>439</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>light_trigers_time</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>groupBox_35</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>118</x>
+     <y>215</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>681</x>
+     <y>439</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
    <sender>light_trigers_time</sender>
    <signal>toggled(bool)</signal>
    <receiver>groupBox_38</receiver>
@@ -2518,14 +2460,30 @@
    </hints>
   </connection>
   <connection>
-   <sender>light_trigers_time</sender>
+   <sender>light_trigers_sensors</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>light_control_onoff</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>118</x>
+     <y>160</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>493</x>
+     <y>417</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>light_trigers_sensors</sender>
    <signal>toggled(bool)</signal>
    <receiver>groupBox_35</receiver>
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
      <x>118</x>
-     <y>215</y>
+     <y>160</y>
     </hint>
     <hint type="destinationlabel">
      <x>681</x>
@@ -2534,17 +2492,257 @@
    </hints>
   </connection>
   <connection>
-   <sender>light_control_onoff</sender>
+   <sender>temperature_trigers_sensors</sender>
    <signal>toggled(bool)</signal>
-   <receiver>groupBox_35</receiver>
+   <receiver>temperature_control_onoff</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>119</x>
+     <y>161</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>493</x>
+     <y>416</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>temperature_trigers_time</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>groupBox_34</receiver>
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>493</x>
-     <y>417</y>
+     <x>119</x>
+     <y>216</y>
     </hint>
     <hint type="destinationlabel">
-     <x>681</x>
+     <x>680</x>
+     <y>439</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>temperature_trigers_off</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>groupBox_36</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>119</x>
+     <y>271</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>493</x>
+     <y>439</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>temperature_trigers_time</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>groupBox_36</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>119</x>
+     <y>216</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>493</x>
+     <y>439</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>temperature_trigers_sensors</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>groupBox_34</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>119</x>
+     <y>161</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>680</x>
+     <y>439</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>humidity_trigers_sensors</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>groupBox_12</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>150</x>
+     <y>179</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>439</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>humidity_trigers_off</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>groupBox_12</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>150</x>
+     <y>252</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>439</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>water_trigers_off</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>groupBox_15</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>150</x>
+     <y>270</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>439</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>water_trigers_time</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>groupBox_15</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>150</x>
+     <y>215</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>439</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>water_trigers_sensors</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>groupBox_15</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>150</x>
+     <y>160</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>439</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>water_trigers_sensors</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>groupBox_33</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>150</x>
+     <y>160</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>497</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>temperature_trigers_time</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>temperature_time_heating_on</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>119</x>
+     <y>216</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>348</x>
+     <y>415</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>temperature_trigers_time</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>temperature_time_heating_off</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>119</x>
+     <y>216</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>348</x>
+     <y>492</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>temperature_trigers_time</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>label_14</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>119</x>
+     <y>216</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>264</x>
+     <y>415</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>temperature_trigers_time</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>label_15</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>119</x>
+     <y>216</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>264</x>
+     <y>492</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>temperature_trigers_sensors</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>groupBox_9</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>119</x>
+     <y>161</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>306</x>
      <y>439</y>
     </hint>
    </hints>
