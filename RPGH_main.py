@@ -32,7 +32,7 @@ from matplotlib import dates
 import numpy as np
 from datetime import datetime
 import configparser
-from RPGH_main_gui_signals_sorted import Ui_MainWindow
+from RPGH_main_gui import Ui_MainWindow
 from PID_warning import Ui_Dialog
 import pandas as pd
 from pandas.plotting import register_matplotlib_converters
@@ -177,6 +177,8 @@ class DesignerMainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.temperature_bool_temp_alert.setChecked(cfg.getboolean('temperature',
         'bool_alert'))
         self.temperature_bool_temp_alert.stateChanged.connect(self.write_temp_alert)
+
+        self.temperature_control_pid.clicked.connect(self.ui_dialog)
 # humidity management tab
 # missing groupBox with sensor/off choice
         self.humidity_trigers_off.setChecked(cfg.getboolean('humidity',

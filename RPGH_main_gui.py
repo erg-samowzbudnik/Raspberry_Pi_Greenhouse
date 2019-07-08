@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'RPGH_main_gui_signals_sorted.ui'
+# Form implementation generated from reading ui file 'RPGH_main_gui.ui'
 #
 # Created by: PyQt5 UI code generator 5.10.1
 #
@@ -383,6 +383,8 @@ class Ui_MainWindow(object):
         self.gridLayout_34 = QtWidgets.QGridLayout()
         self.gridLayout_34.setObjectName("gridLayout_34")
         self.doubleSpinBox_2 = QtWidgets.QDoubleSpinBox(self.groupBox_35)
+        self.doubleSpinBox_2.setMaximum(5.99)
+        self.doubleSpinBox_2.setSingleStep(0.05)
         self.doubleSpinBox_2.setObjectName("doubleSpinBox_2")
         self.gridLayout_34.addWidget(self.doubleSpinBox_2, 1, 1, 1, 1)
         self.label_80 = QtWidgets.QLabel(self.groupBox_35)
@@ -398,6 +400,8 @@ class Ui_MainWindow(object):
         self.light_pid_control_kp.setObjectName("light_pid_control_kp")
         self.gridLayout_34.addWidget(self.light_pid_control_kp, 0, 1, 1, 1)
         self.light_pid_control_kd = QtWidgets.QDoubleSpinBox(self.groupBox_35)
+        self.light_pid_control_kd.setMaximum(5.99)
+        self.light_pid_control_kd.setSingleStep(0.05)
         self.light_pid_control_kd.setObjectName("light_pid_control_kd")
         self.gridLayout_34.addWidget(self.light_pid_control_kd, 2, 1, 1, 1)
         self.label_81 = QtWidgets.QLabel(self.groupBox_35)
@@ -577,14 +581,20 @@ class Ui_MainWindow(object):
         self.gridLayout_13.setObjectName("gridLayout_13")
         self.doubleSpinBox_5 = QtWidgets.QDoubleSpinBox(self.groupBox_34)
         self.doubleSpinBox_5.setEnabled(False)
+        self.doubleSpinBox_5.setMaximum(5.99)
+        self.doubleSpinBox_5.setSingleStep(0.05)
         self.doubleSpinBox_5.setObjectName("doubleSpinBox_5")
         self.gridLayout_13.addWidget(self.doubleSpinBox_5, 1, 1, 1, 1)
         self.doubleSpinBox_6 = QtWidgets.QDoubleSpinBox(self.groupBox_34)
         self.doubleSpinBox_6.setEnabled(False)
+        self.doubleSpinBox_6.setMaximum(5.99)
+        self.doubleSpinBox_6.setSingleStep(0.05)
         self.doubleSpinBox_6.setObjectName("doubleSpinBox_6")
         self.gridLayout_13.addWidget(self.doubleSpinBox_6, 2, 1, 1, 1)
         self.doubleSpinBox_4 = QtWidgets.QDoubleSpinBox(self.groupBox_34)
         self.doubleSpinBox_4.setEnabled(False)
+        self.doubleSpinBox_4.setMaximum(5.99)
+        self.doubleSpinBox_4.setSingleStep(0.05)
         self.doubleSpinBox_4.setObjectName("doubleSpinBox_4")
         self.gridLayout_13.addWidget(self.doubleSpinBox_4, 0, 1, 1, 1)
         self.label_82 = QtWidgets.QLabel(self.groupBox_34)
@@ -1228,8 +1238,8 @@ class Ui_MainWindow(object):
         self.tabWidget_2.setCurrentIndex(0)
         self.tabWidget_3.setCurrentIndex(0)
         self.light_trigers_sensors.toggled['bool'].connect(self.groupBox_38.setEnabled)
-        self.light_control_onoff.toggled['bool'].connect(self.groupBox_35.setDisabled)
-        self.light_control_pid.toggled['bool'].connect(self.groupBox_35.setEnabled)
+        self.light_control_onoff.clicked['bool'].connect(self.groupBox_35.setDisabled)
+        self.light_control_pid.clicked['bool'].connect(self.groupBox_35.setEnabled)
         self.light_trigers_off.toggled['bool'].connect(self.groupBox_3.setDisabled)
         self.light_trigers_time.toggled['bool'].connect(self.groupBox_3.setEnabled)
         self.temperature_trigers_off.toggled['bool'].connect(self.groupBox_9.setDisabled)
@@ -1237,8 +1247,8 @@ class Ui_MainWindow(object):
         self.temperature_trigers_time.toggled['bool'].connect(self.groupBox_9.setEnabled)
         self.temperature_trigers_time.toggled['bool'].connect(self.groupBox_6.setEnabled)
         self.temperature_trigers_sensors.toggled['bool'].connect(self.groupBox_36.setEnabled)
-        self.temperature_control_onoff.toggled['bool'].connect(self.groupBox_34.setDisabled)
-        self.temperature_control_pid.toggled['bool'].connect(self.groupBox_34.setEnabled)
+        self.temperature_control_onoff.clicked['bool'].connect(self.groupBox_34.setDisabled)
+        self.temperature_control_pid.clicked['bool'].connect(self.groupBox_34.setEnabled)
         self.light_trigers_off.toggled['bool'].connect(self.groupBox_35.setDisabled)
         self.temperature_trigers_off.toggled['bool'].connect(self.groupBox_34.setDisabled)
         self.light_trigers_off.toggled['bool'].connect(self.groupBox_38.setDisabled)
@@ -1262,6 +1272,12 @@ class Ui_MainWindow(object):
         self.temperature_trigers_time.toggled['bool'].connect(self.label_14.setEnabled)
         self.temperature_trigers_time.toggled['bool'].connect(self.label_15.setEnabled)
         self.temperature_trigers_sensors.toggled['bool'].connect(self.groupBox_9.setDisabled)
+        self.temperature_control_pid.toggled['bool'].connect(self.doubleSpinBox_4.setEnabled)
+        self.temperature_control_pid.toggled['bool'].connect(self.doubleSpinBox_5.setEnabled)
+        self.temperature_control_pid.toggled['bool'].connect(self.doubleSpinBox_6.setEnabled)
+        self.temperature_control_pid.toggled['bool'].connect(self.label_82.setEnabled)
+        self.temperature_control_pid.toggled['bool'].connect(self.label_83.setEnabled)
+        self.temperature_control_pid.clicked['bool'].connect(self.label_84.setEnabled)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
